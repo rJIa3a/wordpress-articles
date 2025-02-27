@@ -2,8 +2,11 @@ name: Analyze Internal Links
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "articles/**"
+  workflow_dispatch:  # Позволяет запускать вручную
   schedule:
     - cron: "0 0 * * *"  # Запуск каждый день в полночь
 
