@@ -1,0 +1,35 @@
+name: Prepare Articles
+
+on:
+  push:
+    paths:
+      - "articles/*.json"
+      - "prepare_articles.py"
+  workflow_dispatch:
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install beautifulsoup4 markdownify
+
+      - name: Run script
+        run: python prepare_articles.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add clean_articles.json
+          git commit -m "Updated clean_articles.json" || echo "Nothing to commit"
+          git push
