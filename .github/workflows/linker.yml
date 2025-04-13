@@ -1,0 +1,35 @@
+name: Generate Contextual Links
+
+on:
+  push:
+    paths:
+      - "clean_articles.json"
+      - "context_linker.py"
+  workflow_dispatch:
+
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install sentence-transformers
+
+      - name: Run linking script
+        run: python context_linker.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add context_links.json
+          git commit -m "Updated context_links.json" || echo "Nothing to commit"
+          git push
