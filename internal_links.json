@@ -1,36 +1,36 @@
 {
-    "500": [
+    "1633": [
         {
-            "id": 516,
-            "title": "Переезд в Ижевск: «дважды столица», её плюсы и минусы",
-            "url": "https://dagorod.ru/pereezd-v-izhevsk/"
+            "id": 1390,
+            "title": "Достопримечательности Ростова-на-Дону: лучший город для пеших прогулок",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/"
         },
         {
-            "id": 423,
-            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
-            "url": "https://dagorod.ru/pereezd-v-sochi/"
+            "id": 1678,
+            "title": "Астрахань за два дня: что посмотреть, куда сходить?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-astrakhani/"
         },
         {
-            "id": 566,
-            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
-            "url": "https://dagorod.ru/pereezd-v-perm/"
+            "id": 1533,
+            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
         }
     ],
-    "601": [
-        {
-            "id": 556,
-            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
-            "url": "https://dagorod.ru/pereezd-v-belgorod/"
-        },
+    "670": [
         {
             "id": 659,
             "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
             "url": "https://dagorod.ru/pereezd-v-saratov/"
         },
         {
-            "id": 670,
-            "title": "Переезд в Самару: сердце России на красавице-Волге",
-            "url": "https://dagorod.ru/pereezd-v-samaru/"
+            "id": 556,
+            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
+            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+        },
+        {
+            "id": 637,
+            "title": "Переезд в Новосибирск: открывающиеся перспективы против суровых морозов и грязи",
+            "url": "https://dagorod.ru/pereezd-v-novosibirsk/"
         }
     ],
     "1533": [
@@ -50,50 +50,50 @@
             "url": "https://dagorod.ru/pereezd-v-krasnodar/"
         }
     ],
-    "626": [
+    "1390": [
+        {
+            "id": 1445,
+            "title": "Достопримечательности Саратова: какой памятник в городе &#8212; самый странный",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-saratova/"
+        },
+        {
+            "id": 1533,
+            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
+        },
+        {
+            "id": 1633,
+            "title": "Достопримечательности Краснодара за 2 дня: куда пойти, что посмотреть",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnodara/"
+        }
+    ],
+    "566": [
+        {
+            "id": 589,
+            "title": "Переезд в Омск: особенности жизни, климата и цен",
+            "url": "https://dagorod.ru/pereezd-v-omsk/"
+        },
+        {
+            "id": 613,
+            "title": "Переезд в Красноярск: чем привлекает россиян бывший «ссыльный край»",
+            "url": "https://dagorod.ru/pereezd-v-krasnoyarsk/"
+        },
         {
             "id": 682,
             "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
             "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
-        },
-        {
-            "id": 580,
-            "title": "Переезд в Воронеж: город контрастов, притягивающий северян",
-            "url": "https://dagorod.ru/pereezd-v-voronezh/"
-        },
-        {
-            "id": 670,
-            "title": "Переезд в Самару: сердце России на красавице-Волге",
-            "url": "https://dagorod.ru/pereezd-v-samaru/"
         }
     ],
-    "453": [
+    "943": [
         {
-            "id": 473,
-            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
-            "url": "https://dagorod.ru/pereezd-v-penzu/"
+            "id": 1205,
+            "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
         },
         {
-            "id": 462,
-            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
-            "url": "https://dagorod.ru/pereezd-v-ryazan/"
-        },
-        {
-            "id": 443,
-            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
-            "url": "https://dagorod.ru/pereezd-v-volgograd/"
-        }
-    ],
-    "1044": [
-        {
-            "id": 1118,
-            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
-        },
-        {
-            "id": 943,
-            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+            "id": 1044,
+            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
         },
         {
             "id": 1163,
@@ -118,344 +118,21 @@
             "url": "https://dagorod.ru/dostoprimechatelnosti-ufy/"
         }
     ],
-    "682": [
+    "626": [
         {
-            "id": 556,
-            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
-            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+            "id": 682,
+            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
+            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
         },
         {
-            "id": 694,
-            "title": "Переезд в Нижневартовск: стоит ли перебираться в нефтяную столицу?",
-            "url": "https://dagorod.ru/pereezd-v-nizhnevartovsk/"
+            "id": 580,
+            "title": "Переезд в Воронеж: город контрастов, притягивающий северян",
+            "url": "https://dagorod.ru/pereezd-v-voronezh/"
         },
         {
             "id": 670,
             "title": "Переезд в Самару: сердце России на красавице-Волге",
             "url": "https://dagorod.ru/pereezd-v-samaru/"
-        }
-    ],
-    "462": [
-        {
-            "id": 473,
-            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
-            "url": "https://dagorod.ru/pereezd-v-penzu/"
-        },
-        {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
-        },
-        {
-            "id": 443,
-            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
-            "url": "https://dagorod.ru/pereezd-v-volgograd/"
-        }
-    ],
-    "409": [
-        {
-            "id": 423,
-            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
-            "url": "https://dagorod.ru/pereezd-v-sochi/"
-        },
-        {
-            "id": 473,
-            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
-            "url": "https://dagorod.ru/pereezd-v-penzu/"
-        },
-        {
-            "id": 443,
-            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
-            "url": "https://dagorod.ru/pereezd-v-volgograd/"
-        }
-    ],
-    "1302": [
-        {
-            "id": 756,
-            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
-        },
-        {
-            "id": 880,
-            "title": "От крепости до космоса: Топ мест в Новокузнецке для идеального путешествия",
-            "url": "https://dagorod.ru/dostoprimechatelnostej-novokuznecka/"
-        },
-        {
-            "id": 807,
-            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
-        }
-    ],
-    "694": [
-        {
-            "id": 682,
-            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
-            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
-        },
-        {
-            "id": 556,
-            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
-            "url": "https://dagorod.ru/pereezd-v-belgorod/"
-        },
-        {
-            "id": 659,
-            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
-            "url": "https://dagorod.ru/pereezd-v-saratov/"
-        }
-    ],
-    "807": [
-        {
-            "id": 756,
-            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
-        },
-        {
-            "id": 907,
-            "title": "Достопримечательности Хабаровска за 2 дня: куда пойти, что посмотреть",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/"
-        },
-        {
-            "id": 853,
-            "title": "Достопримечательности Рязани: идеальное первое знакомство с городом",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-ryazani/"
-        }
-    ],
-    "1603": [
-        {
-            "id": 1497,
-            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
-        },
-        {
-            "id": 1365,
-            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
-        },
-        {
-            "id": 1579,
-            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
-        }
-    ],
-    "487": [
-        {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
-        },
-        {
-            "id": 473,
-            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
-            "url": "https://dagorod.ru/pereezd-v-penzu/"
-        },
-        {
-            "id": 462,
-            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
-            "url": "https://dagorod.ru/pereezd-v-ryazan/"
-        }
-    ],
-    "423": [
-        {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
-        },
-        {
-            "id": 383,
-            "title": "Переезжаем в Казань: плюсы и минусы, особенности, районы и цены",
-            "url": "https://dagorod.ru/pereezd-v-kazan/"
-        },
-        {
-            "id": 500,
-            "title": "Переезд в Хабаровск: чем хорош и плох для жизни город с 5-тысячной купюры",
-            "url": "https://dagorod.ru/pereezd-v-habarovsk/"
-        }
-    ],
-    "613": [
-        {
-            "id": 566,
-            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
-            "url": "https://dagorod.ru/pereezd-v-perm/"
-        },
-        {
-            "id": 589,
-            "title": "Переезд в Омск: особенности жизни, климата и цен",
-            "url": "https://dagorod.ru/pereezd-v-omsk/"
-        },
-        {
-            "id": 682,
-            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
-            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
-        }
-    ],
-    "1365": [
-        {
-            "id": 1603,
-            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
-        },
-        {
-            "id": 1497,
-            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
-        },
-        {
-            "id": 1579,
-            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
-        }
-    ],
-    "443": [
-        {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
-        },
-        {
-            "id": 473,
-            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
-            "url": "https://dagorod.ru/pereezd-v-penzu/"
-        },
-        {
-            "id": 462,
-            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
-            "url": "https://dagorod.ru/pereezd-v-ryazan/"
-        }
-    ],
-    "589": [
-        {
-            "id": 566,
-            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
-            "url": "https://dagorod.ru/pereezd-v-perm/"
-        },
-        {
-            "id": 613,
-            "title": "Переезд в Красноярск: чем привлекает россиян бывший «ссыльный край»",
-            "url": "https://dagorod.ru/pereezd-v-krasnoyarsk/"
-        },
-        {
-            "id": 682,
-            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
-            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
-        }
-    ],
-    "1390": [
-        {
-            "id": 1445,
-            "title": "Достопримечательности Саратова: какой памятник в городе &#8212; самый странный",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-saratova/"
-        },
-        {
-            "id": 1533,
-            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
-        },
-        {
-            "id": 1633,
-            "title": "Достопримечательности Краснодара за 2 дня: куда пойти, что посмотреть",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnodara/"
-        }
-    ],
-    "1205": [
-        {
-            "id": 1118,
-            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
-        },
-        {
-            "id": 1163,
-            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
-        },
-        {
-            "id": 943,
-            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
-        }
-    ],
-    "943": [
-        {
-            "id": 1205,
-            "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
-        },
-        {
-            "id": 1044,
-            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
-        },
-        {
-            "id": 1163,
-            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
-        }
-    ],
-    "1118": [
-        {
-            "id": 1205,
-            "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
-        },
-        {
-            "id": 1163,
-            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
-        },
-        {
-            "id": 1044,
-            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
-        }
-    ],
-    "1497": [
-        {
-            "id": 1603,
-            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
-        },
-        {
-            "id": 1579,
-            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
-        },
-        {
-            "id": 1365,
-            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
-        }
-    ],
-    "853": [
-        {
-            "id": 1118,
-            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
-        },
-        {
-            "id": 907,
-            "title": "Достопримечательности Хабаровска за 2 дня: куда пойти, что посмотреть",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/"
-        },
-        {
-            "id": 807,
-            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
-        }
-    ],
-    "1579": [
-        {
-            "id": 1497,
-            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
-        },
-        {
-            "id": 1603,
-            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
-        },
-        {
-            "id": 1365,
-            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
         }
     ],
     "756": [
@@ -475,58 +152,41 @@
             "url": "https://dagorod.ru/dostoprimechatelnosti-ryazani/"
         }
     ],
-    "907": [
+    "1497": [
         {
-            "id": 1118,
-            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
+            "id": 1603,
+            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
         },
         {
-            "id": 807,
-            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
+            "id": 1579,
+            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
         },
         {
-            "id": 1044,
-            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
+            "id": 1365,
+            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
         }
     ],
-    "383": [
+    "807": [
         {
-            "id": 531,
-            "title": "Достопримечательности Ярославля — живая история древнего города",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-yaroslavlya/"
+            "id": 756,
+            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
         },
         {
-            "id": 423,
-            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
-            "url": "https://dagorod.ru/pereezd-v-sochi/"
+            "id": 907,
+            "title": "Достопримечательности Хабаровска за 2 дня: куда пойти, что посмотреть",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/"
         },
         {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+            "id": 853,
+            "title": "Достопримечательности Рязани: идеальное первое знакомство с городом",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-ryazani/"
         }
     ],
-    "1633": [
-        {
-            "id": 1390,
-            "title": "Достопримечательности Ростова-на-Дону: лучший город для пеших прогулок",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/"
-        },
-        {
-            "id": 1678,
-            "title": "Астрахань за два дня: что посмотреть, куда сходить?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-astrakhani/"
-        },
-        {
-            "id": 1533,
-            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
-        }
-    ],
-    "1336": [
+    "853": [
         {
             "id": 1118,
             "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
@@ -538,43 +198,9 @@
             "url": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/"
         },
         {
-            "id": 1044,
-            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
-        }
-    ],
-    "1090": [
-        {
-            "id": 756,
-            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
-        },
-        {
-            "id": 880,
-            "title": "От крепости до космоса: Топ мест в Новокузнецке для идеального путешествия",
-            "url": "https://dagorod.ru/dostoprimechatelnostej-novokuznecka/"
-        },
-        {
-            "id": 1302,
-            "title": "Достопримечательности Уфы — рекомендации для туристов на 2 дня посещения",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-ufy/"
-        }
-    ],
-    "473": [
-        {
-            "id": 409,
-            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
-            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
-        },
-        {
-            "id": 462,
-            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
-            "url": "https://dagorod.ru/pereezd-v-ryazan/"
-        },
-        {
-            "id": 443,
-            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
-            "url": "https://dagorod.ru/pereezd-v-volgograd/"
+            "id": 807,
+            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
         }
     ],
     "659": [
@@ -594,21 +220,38 @@
             "url": "https://dagorod.ru/pereezd-v-novosibirsk/"
         }
     ],
-    "1445": [
+    "1000": [
         {
-            "id": 1390,
-            "title": "Достопримечательности Ростова-на-Дону: лучший город для пеших прогулок",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/"
+            "id": 943,
+            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
         },
         {
-            "id": 1533,
-            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
+            "id": 1044,
+            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
         },
         {
-            "id": 1720,
-            "title": "Переезд в Краснодар: жилье, работа, плюсы и минусы",
-            "url": "https://dagorod.ru/pereezd-v-krasnodar/"
+            "id": 1163,
+            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
+        }
+    ],
+    "487": [
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        },
+        {
+            "id": 473,
+            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
+            "url": "https://dagorod.ru/pereezd-v-penzu/"
+        },
+        {
+            "id": 462,
+            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
+            "url": "https://dagorod.ru/pereezd-v-ryazan/"
         }
     ],
     "580": [
@@ -628,91 +271,6 @@
             "url": "https://dagorod.ru/pereezd-v-belgorod/"
         }
     ],
-    "1258": [
-        {
-            "id": 1163,
-            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
-        },
-        {
-            "id": 1044,
-            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
-        },
-        {
-            "id": 756,
-            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
-        }
-    ],
-    "556": [
-        {
-            "id": 659,
-            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
-            "url": "https://dagorod.ru/pereezd-v-saratov/"
-        },
-        {
-            "id": 670,
-            "title": "Переезд в Самару: сердце России на красавице-Волге",
-            "url": "https://dagorod.ru/pereezd-v-samaru/"
-        },
-        {
-            "id": 637,
-            "title": "Переезд в Новосибирск: открывающиеся перспективы против суровых морозов и грязи",
-            "url": "https://dagorod.ru/pereezd-v-novosibirsk/"
-        }
-    ],
-    "670": [
-        {
-            "id": 659,
-            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
-            "url": "https://dagorod.ru/pereezd-v-saratov/"
-        },
-        {
-            "id": 556,
-            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
-            "url": "https://dagorod.ru/pereezd-v-belgorod/"
-        },
-        {
-            "id": 637,
-            "title": "Переезд в Новосибирск: открывающиеся перспективы против суровых морозов и грязи",
-            "url": "https://dagorod.ru/pereezd-v-novosibirsk/"
-        }
-    ],
-    "516": [
-        {
-            "id": 500,
-            "title": "Переезд в Хабаровск: чем хорош и плох для жизни город с 5-тысячной купюры",
-            "url": "https://dagorod.ru/pereezd-v-habarovsk/"
-        },
-        {
-            "id": 423,
-            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
-            "url": "https://dagorod.ru/pereezd-v-sochi/"
-        },
-        {
-            "id": 566,
-            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
-            "url": "https://dagorod.ru/pereezd-v-perm/"
-        }
-    ],
-    "566": [
-        {
-            "id": 589,
-            "title": "Переезд в Омск: особенности жизни, климата и цен",
-            "url": "https://dagorod.ru/pereezd-v-omsk/"
-        },
-        {
-            "id": 613,
-            "title": "Переезд в Красноярск: чем привлекает россиян бывший «ссыльный край»",
-            "url": "https://dagorod.ru/pereezd-v-krasnoyarsk/"
-        },
-        {
-            "id": 682,
-            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
-            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
-        }
-    ],
     "1720": [
         {
             "id": 1445,
@@ -730,21 +288,38 @@
             "url": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/"
         }
     ],
-    "1000": [
+    "1302": [
         {
-            "id": 943,
-            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+            "id": 756,
+            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
+        },
+        {
+            "id": 880,
+            "title": "От крепости до космоса: Топ мест в Новокузнецке для идеального путешествия",
+            "url": "https://dagorod.ru/dostoprimechatelnostej-novokuznecka/"
+        },
+        {
+            "id": 807,
+            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
+        }
+    ],
+    "907": [
+        {
+            "id": 1118,
+            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
+        },
+        {
+            "id": 807,
+            "title": "Пенза за 2 дня: куда пойти, что посмотреть. Рейтинг интересных и нетипичных мест",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-penzy/"
         },
         {
             "id": 1044,
             "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
             "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
-        },
-        {
-            "id": 1163,
-            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
         }
     ],
     "637": [
@@ -764,6 +339,74 @@
             "url": "https://dagorod.ru/pereezd-v-saratov/"
         }
     ],
+    "531": [
+        {
+            "id": 383,
+            "title": "Переезжаем в Казань: плюсы и минусы, особенности, районы и цены",
+            "url": "https://dagorod.ru/pereezd-v-kazan/"
+        },
+        {
+            "id": 1205,
+            "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
+        },
+        {
+            "id": 943,
+            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+        }
+    ],
+    "556": [
+        {
+            "id": 659,
+            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
+            "url": "https://dagorod.ru/pereezd-v-saratov/"
+        },
+        {
+            "id": 670,
+            "title": "Переезд в Самару: сердце России на красавице-Волге",
+            "url": "https://dagorod.ru/pereezd-v-samaru/"
+        },
+        {
+            "id": 637,
+            "title": "Переезд в Новосибирск: открывающиеся перспективы против суровых морозов и грязи",
+            "url": "https://dagorod.ru/pereezd-v-novosibirsk/"
+        }
+    ],
+    "423": [
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        },
+        {
+            "id": 383,
+            "title": "Переезжаем в Казань: плюсы и минусы, особенности, районы и цены",
+            "url": "https://dagorod.ru/pereezd-v-kazan/"
+        },
+        {
+            "id": 500,
+            "title": "Переезд в Хабаровск: чем хорош и плох для жизни город с 5-тысячной купюры",
+            "url": "https://dagorod.ru/pereezd-v-habarovsk/"
+        }
+    ],
+    "589": [
+        {
+            "id": 566,
+            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
+            "url": "https://dagorod.ru/pereezd-v-perm/"
+        },
+        {
+            "id": 613,
+            "title": "Переезд в Красноярск: чем привлекает россиян бывший «ссыльный край»",
+            "url": "https://dagorod.ru/pereezd-v-krasnoyarsk/"
+        },
+        {
+            "id": 682,
+            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
+            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
+        }
+    ],
     "1163": [
         {
             "id": 1118,
@@ -774,6 +417,57 @@
             "id": 1205,
             "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
             "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
+        },
+        {
+            "id": 1044,
+            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
+        }
+    ],
+    "1205": [
+        {
+            "id": 1118,
+            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
+        },
+        {
+            "id": 1163,
+            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
+        },
+        {
+            "id": 943,
+            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+        }
+    ],
+    "443": [
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        },
+        {
+            "id": 473,
+            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
+            "url": "https://dagorod.ru/pereezd-v-penzu/"
+        },
+        {
+            "id": 462,
+            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
+            "url": "https://dagorod.ru/pereezd-v-ryazan/"
+        }
+    ],
+    "1336": [
+        {
+            "id": 1118,
+            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
+        },
+        {
+            "id": 907,
+            "title": "Достопримечательности Хабаровска за 2 дня: куда пойти, что посмотреть",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/"
         },
         {
             "id": 1044,
@@ -798,23 +492,6 @@
             "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
         }
     ],
-    "648": [
-        {
-            "id": 556,
-            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
-            "url": "https://dagorod.ru/pereezd-v-belgorod/"
-        },
-        {
-            "id": 659,
-            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
-            "url": "https://dagorod.ru/pereezd-v-saratov/"
-        },
-        {
-            "id": 670,
-            "title": "Переезд в Самару: сердце России на красавице-Волге",
-            "url": "https://dagorod.ru/pereezd-v-samaru/"
-        }
-    ],
     "703": [
         {
             "id": 613,
@@ -832,21 +509,344 @@
             "url": "https://dagorod.ru/pereezd-v-omsk/"
         }
     ],
-    "531": [
+    "453": [
         {
-            "id": 383,
-            "title": "Переезжаем в Казань: плюсы и минусы, особенности, районы и цены",
-            "url": "https://dagorod.ru/pereezd-v-kazan/"
+            "id": 473,
+            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
+            "url": "https://dagorod.ru/pereezd-v-penzu/"
         },
+        {
+            "id": 462,
+            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
+            "url": "https://dagorod.ru/pereezd-v-ryazan/"
+        },
+        {
+            "id": 443,
+            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
+            "url": "https://dagorod.ru/pereezd-v-volgograd/"
+        }
+    ],
+    "383": [
+        {
+            "id": 531,
+            "title": "Достопримечательности Ярославля — живая история древнего города",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-yaroslavlya/"
+        },
+        {
+            "id": 423,
+            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
+            "url": "https://dagorod.ru/pereezd-v-sochi/"
+        },
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        }
+    ],
+    "648": [
+        {
+            "id": 556,
+            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
+            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+        },
+        {
+            "id": 659,
+            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
+            "url": "https://dagorod.ru/pereezd-v-saratov/"
+        },
+        {
+            "id": 670,
+            "title": "Переезд в Самару: сердце России на красавице-Волге",
+            "url": "https://dagorod.ru/pereezd-v-samaru/"
+        }
+    ],
+    "601": [
+        {
+            "id": 556,
+            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
+            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+        },
+        {
+            "id": 659,
+            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
+            "url": "https://dagorod.ru/pereezd-v-saratov/"
+        },
+        {
+            "id": 670,
+            "title": "Переезд в Самару: сердце России на красавице-Волге",
+            "url": "https://dagorod.ru/pereezd-v-samaru/"
+        }
+    ],
+    "694": [
+        {
+            "id": 682,
+            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
+            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
+        },
+        {
+            "id": 556,
+            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
+            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+        },
+        {
+            "id": 659,
+            "title": "Переезд в Саратов: депрессивный регион или прекрасное место для нового старта?",
+            "url": "https://dagorod.ru/pereezd-v-saratov/"
+        }
+    ],
+    "500": [
+        {
+            "id": 516,
+            "title": "Переезд в Ижевск: «дважды столица», её плюсы и минусы",
+            "url": "https://dagorod.ru/pereezd-v-izhevsk/"
+        },
+        {
+            "id": 423,
+            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
+            "url": "https://dagorod.ru/pereezd-v-sochi/"
+        },
+        {
+            "id": 566,
+            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
+            "url": "https://dagorod.ru/pereezd-v-perm/"
+        }
+    ],
+    "1445": [
+        {
+            "id": 1390,
+            "title": "Достопримечательности Ростова-на-Дону: лучший город для пеших прогулок",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/"
+        },
+        {
+            "id": 1533,
+            "title": "Достопримечательности Волгограда: эхо войны, метротрам и самый большой памятник Ленину",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-volgograda/"
+        },
+        {
+            "id": 1720,
+            "title": "Переезд в Краснодар: жилье, работа, плюсы и минусы",
+            "url": "https://dagorod.ru/pereezd-v-krasnodar/"
+        }
+    ],
+    "409": [
+        {
+            "id": 423,
+            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
+            "url": "https://dagorod.ru/pereezd-v-sochi/"
+        },
+        {
+            "id": 473,
+            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
+            "url": "https://dagorod.ru/pereezd-v-penzu/"
+        },
+        {
+            "id": 443,
+            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
+            "url": "https://dagorod.ru/pereezd-v-volgograd/"
+        }
+    ],
+    "1044": [
+        {
+            "id": 1118,
+            "title": "Достопримечательности Красноярска: места в городе, которые прославила 10-рублевая купюра",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/"
+        },
+        {
+            "id": 943,
+            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+        },
+        {
+            "id": 1163,
+            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
+        }
+    ],
+    "1365": [
+        {
+            "id": 1603,
+            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
+        },
+        {
+            "id": 1497,
+            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
+        },
+        {
+            "id": 1579,
+            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
+        }
+    ],
+    "1603": [
+        {
+            "id": 1497,
+            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
+        },
+        {
+            "id": 1365,
+            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
+        },
+        {
+            "id": 1579,
+            "title": "Нижневартовск для любопытных: 10 уникальных мест для посещения",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/"
+        }
+    ],
+    "462": [
+        {
+            "id": 473,
+            "title": "Переезд в Пензу: незаметный городок или прекрасное место для жизни?",
+            "url": "https://dagorod.ru/pereezd-v-penzu/"
+        },
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        },
+        {
+            "id": 443,
+            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
+            "url": "https://dagorod.ru/pereezd-v-volgograd/"
+        }
+    ],
+    "1090": [
+        {
+            "id": 756,
+            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
+        },
+        {
+            "id": 880,
+            "title": "От крепости до космоса: Топ мест в Новокузнецке для идеального путешествия",
+            "url": "https://dagorod.ru/dostoprimechatelnostej-novokuznecka/"
+        },
+        {
+            "id": 1302,
+            "title": "Достопримечательности Уфы — рекомендации для туристов на 2 дня посещения",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-ufy/"
+        }
+    ],
+    "613": [
+        {
+            "id": 566,
+            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
+            "url": "https://dagorod.ru/pereezd-v-perm/"
+        },
+        {
+            "id": 589,
+            "title": "Переезд в Омск: особенности жизни, климата и цен",
+            "url": "https://dagorod.ru/pereezd-v-omsk/"
+        },
+        {
+            "id": 682,
+            "title": "Переезд в Ярославль: все, что нужно знать о городе с купюры",
+            "url": "https://dagorod.ru/pereezd-v-yaroslavl/"
+        }
+    ],
+    "1118": [
         {
             "id": 1205,
             "title": "Достопримечательности Новосибирска: что надо обязательно сделать в &#171;городе памятников&#187;",
             "url": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/"
         },
         {
-            "id": 943,
-            "title": "Достопримечательности Ижевска: музей Калашникова, Царь Пушка-3 и &#171;дом наоборот&#187;",
-            "url": "https://dagorod.ru/dostoprimechatelnosti-izhevska/"
+            "id": 1163,
+            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
+        },
+        {
+            "id": 1044,
+            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
+        }
+    ],
+    "473": [
+        {
+            "id": 409,
+            "title": "Переезд в Челябинск: все, что нужно знать о столице Южного Урала",
+            "url": "https://dagorod.ru/pereezd-v-chelyabinsk/"
+        },
+        {
+            "id": 462,
+            "title": "Рязань: вся правда о переезде в современный город с многовековой историей",
+            "url": "https://dagorod.ru/pereezd-v-ryazan/"
+        },
+        {
+            "id": 443,
+            "title": "Переезд в Волгоград: подходит ли вам для жизни город-герой",
+            "url": "https://dagorod.ru/pereezd-v-volgograd/"
+        }
+    ],
+    "1579": [
+        {
+            "id": 1497,
+            "title": "Достопримечательности Самары — красивый город с купеческой архитектурой",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-samary/"
+        },
+        {
+            "id": 1603,
+            "title": "Достопримечательности Тюмени: знакомимся с городом правильно",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/"
+        },
+        {
+            "id": 1365,
+            "title": "Достопримечательности Белгорода: не уезжайте, пока не увидите это",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/"
+        }
+    ],
+    "1258": [
+        {
+            "id": 1163,
+            "title": "Достопримечательности Нижнего Новгорода или где находится памятник Громозеке?",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/"
+        },
+        {
+            "id": 1044,
+            "title": "Достопримечательности Воронежа: где находится местное море и какой клад лежит на его дне",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-voronezha/"
+        },
+        {
+            "id": 756,
+            "title": "Достопримечательности Сочи: что посмотреть в городе, если каникулы &#8212; всего 2 дня",
+            "url": "https://dagorod.ru/dostoprimechatelnosti-sochi/"
+        }
+    ],
+    "516": [
+        {
+            "id": 500,
+            "title": "Переезд в Хабаровск: чем хорош и плох для жизни город с 5-тысячной купюры",
+            "url": "https://dagorod.ru/pereezd-v-habarovsk/"
+        },
+        {
+            "id": 423,
+            "title": "Переезд в Сочи: ожидания и реальность. Стоит ли сюда переезжать и к чему готовиться?",
+            "url": "https://dagorod.ru/pereezd-v-sochi/"
+        },
+        {
+            "id": 566,
+            "title": "Переезд в Пермь: стоит ли перебираться в город, где «счастье не за горами»",
+            "url": "https://dagorod.ru/pereezd-v-perm/"
+        }
+    ],
+    "682": [
+        {
+            "id": 556,
+            "title": "Переезд в Белгород: подойдет ли вам героический город рядом с границей страны",
+            "url": "https://dagorod.ru/pereezd-v-belgorod/"
+        },
+        {
+            "id": 694,
+            "title": "Переезд в Нижневартовск: стоит ли перебираться в нефтяную столицу?",
+            "url": "https://dagorod.ru/pereezd-v-nizhnevartovsk/"
+        },
+        {
+            "id": 670,
+            "title": "Переезд в Самару: сердце России на красавице-Волге",
+            "url": "https://dagorod.ru/pereezd-v-samaru/"
         }
     ]
 }
