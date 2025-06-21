@@ -1,0 +1,41 @@
+name: Build and Release Plugin
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+      - run: vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage.xml
+
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+      - run: mkdir build && cp -r context-linker build/context-linker
+      - run: zip -r plugin.zip context-linker
+      - uses: actions/upload-artifact@v3
+        with:
+          name: plugin
+          path: plugin.zip
+      - name: Get version
+        id: vars
+        run: echo "::set-output name=VERSION::$(grep -oP 'Version:\s*\K.*' context-linker/context-linker.php)"
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.vars.outputs.VERSION }}
+          files: plugin.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
