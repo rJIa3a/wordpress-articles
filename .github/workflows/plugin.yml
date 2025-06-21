@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
       - run: vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage.xml
@@ -25,13 +25,13 @@ jobs:
       - uses: php-actions/composer@v6
       - run: mkdir build && cp -r context-linker build/context-linker
       - run: zip -r plugin.zip context-linker
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: plugin
           path: plugin.zip
       - name: Get version
         id: vars
-        run: echo "::set-output name=VERSION::$(grep -oP 'Version:\s*\K.*' context-linker/context-linker.php)"
+        run: echo "VERSION=$(grep -oP 'Version:\s*\K.*' context-linker/context-linker.php)" >> "$GITHUB_OUTPUT"
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
