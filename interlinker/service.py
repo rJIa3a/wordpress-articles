@@ -8,7 +8,7 @@ from . import storage as db
 from .content import normalize,parse,insert_preview
 from .retrieval import Engine,Ollama,MiniLM
 LOCK=threading.RLock()
-DEFAULTS=dict(contextual=False,confidence_threshold=.85,provider='lsa',minimum_score=78,max_per_page=3,anchor_repetition_limit=3)
+DEFAULTS=dict(city_mode=False,contextual=False,confidence_threshold=.85,provider='lsa',minimum_score=78,max_per_page=3,anchor_repetition_limit=3)
 def settings(site):
  r=db.rows('SELECT data FROM settings WHERE site_id=?',(site,));return {**DEFAULTS,**(json.loads(r[0]['data']) if r else {})}
 def graph(site):
@@ -36,6 +36,9 @@ def generate(site):
   cfg=settings(site);pages=db.pages(site)
   if len(pages)<2:raise ValueError('Сначала загрузите минимум две страницы')
   if cfg['provider'] not in ('lsa','ollama','minilm'):raise ValueError('Неизвестный provider')
+  if cfg['city_mode']:
+   from .geography import annotate
+   annotate(pages)
   engine=Engine(pages,Ollama() if cfg['provider']=='ollama' else MiniLM() if cfg['provider']=='minilm' else None)
   rules=db.rows('SELECT * FROM seo_priorities WHERE site_id=?',(site,));by={p['url']:p for p in pages}
   accepted=[];repeat=collections.Counter((l['target'],l['anchor'].casefold()) for p in pages for l in p['links'])

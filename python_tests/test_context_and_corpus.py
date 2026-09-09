@@ -25,3 +25,32 @@ def test_city_registry_does_not_learn_test_anchors():
  pages=[dict(url='a',title='ГородА',blocks=[dict(id='0',section='',text='В тексте встречается Скрытыйалиас рядом с описанием района.')]),dict(url='b',title='ГородБ',blocks=[])]
  gold=[dict(source='a',target='b',anchor='Скрытыйалиас')]*2
  r,_=candidates(pages,gold,{'a':'test','b':'train'});assert not r
+
+def test_city_intent_and_long_editorial_title(tmp_path):
+ import json
+ from interlinker.geography import annotate,intent_allowed
+ pages=[dict(title='Достопримечательности Москвы: что посмотреть',url='site')]
+ corpus=tmp_path/'cities.json';corpus.write_text(json.dumps([dict(title='Москва')]))
+ assert annotate(pages,corpus)==1 and pages[0]['entity_name']=='Москва'
+ assert not intent_allowed('Писатель родился в Москве в XIX веке.',pages[0],'Москве')
+ assert intent_allowed('Путешественники осматривают музеи в Москве.',pages[0],'Москве')
+
+def test_embedding_cache_preserves_order_and_resumes(tmp_path, monkeypatch):
+ import numpy as np
+ from types import SimpleNamespace
+ from interlinker.retrieval import MiniLM
+ monkeypatch.chdir(tmp_path)
+ monkeypatch.setattr('importlib.metadata.version',lambda _: 'test')
+ calls=[]
+ class FakeModel:
+  model=SimpleNamespace(_model_dir='fixed-model')
+  def embed(self,texts,batch_size):
+   calls.extend(texts)
+   return [np.array([len(t),1.0]) for t in texts]
+ provider=MiniLM.__new__(MiniLM);provider.model=FakeModel()
+ first=provider.encode(['longer','a','longer'])
+ assert calls==['a','longer']
+ second=provider.encode(['a','longer'])
+ assert calls==['a','longer']
+ np.testing.assert_allclose(first[[1,0]],second)
+ np.testing.assert_allclose(np.linalg.norm(second,axis=1),1)

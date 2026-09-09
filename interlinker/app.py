@@ -86,7 +86,7 @@ def save_priority(site:int,p:Priority):
  with service.LOCK,db.connect() as c:c.execute('INSERT INTO seo_priorities(site_id,kind,value,weight,blocked) VALUES(?,?,?,?,?) ON CONFLICT(site_id,kind,value) DO UPDATE SET weight=excluded.weight,blocked=excluded.blocked',(site,p.kind,p.value,p.weight,int(p.blocked)))
  return priorities(site)
 class Settings(BaseModel):
- contextual:bool=False;confidence_threshold:float=Field(default=.85,ge=.5,le=1);provider:Literal['lsa','ollama','minilm']='lsa';minimum_score:float=Field(default=78,ge=0,le=100);max_per_page:int=Field(default=3,ge=1,le=10);anchor_repetition_limit:int=Field(default=3,ge=1,le=20)
+ city_mode:bool=False;contextual:bool=False;confidence_threshold:float=Field(default=.85,ge=.5,le=1);provider:Literal['lsa','ollama','minilm']='lsa';minimum_score:float=Field(default=78,ge=0,le=100);max_per_page:int=Field(default=3,ge=1,le=10);anchor_repetition_limit:int=Field(default=3,ge=1,le=20)
 @app.get('/api/sites/{site}/settings')
 def settings(site:int):require_site(site);return service.settings(site)
 @app.post('/api/sites/{site}/settings')

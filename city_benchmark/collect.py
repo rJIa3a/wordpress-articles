@@ -1,5 +1,6 @@
 """Collect versioned Wikipedia wikitext; model corpus never contains link attributes."""
-import json,re,time,hashlib,concurrent.futures,argparse
+import json,re,time,hashlib,concurrent.futures,argparse,threading
+from urllib.error import HTTPError
 from pathlib import Path
 from urllib.parse import urlencode,quote,unquote,urljoin,urlsplit
 from urllib.request import Request,urlopen
@@ -7,13 +8,28 @@ import mwparserfromhell as mw
 from bs4 import BeautifulSoup
 ROOT='https://ru.wikipedia.org'
 EXTRA=['Минск','Брест','Гродно','Витебск','Могилёв','Гомель','Алматы','Астана','Бишкек','Ташкент','Самарканд','Бухара','Душанбе','Ереван','Тбилиси','Баку','Варшава','Прага','Белград','София']
+REQUEST_LOCK=threading.Lock()
+LAST_REQUEST=0.0
 def request(url):
+ global LAST_REQUEST
  for attempt in range(4):
   try:
+   with REQUEST_LOCK:
+    delay=max(0,3-(time.monotonic()-LAST_REQUEST))
+    if delay:time.sleep(delay)
+    LAST_REQUEST=time.monotonic()
    with urlopen(Request(url,headers={'User-Agent':'UniversalInterlinker/0.2 (read-only city-link research)'}),timeout=60) as r:return r.read()
+  except HTTPError as exc:
+   if attempt==3:raise
+   if exc.code==429:
+    wait=max(30,int(exc.headers.get('Retry-After','30')))
+    print('Wikipedia rate limit; respecting Retry-After',wait,flush=True)
+    while wait>0:
+     step=min(45,wait);time.sleep(step);wait-=step
+   else:time.sleep(2+attempt*4)
   except Exception:
    if attempt==3:raise
-   time.sleep(1+attempt*2)
+   time.sleep(2+attempt*4)
 def title_key(t):return str(t).replace('_',' ').split('#')[0].strip()
 def url(t):return ROOT+'/wiki/'+quote(t.replace(' ','_'),safe='(),')
 def city_titles(out):
@@ -82,8 +98,8 @@ def batch(titles,cache):
  try:
   result=json.loads(request(ROOT+'/w/api.php?'+urlencode(params)))
   if 'error' in result:raise ValueError(result['error'])
- except Exception:
-  if len(titles)==1:raise
+ except HTTPError as exc:
+  if exc.code not in (413,414) or len(titles)==1:raise
   mid=len(titles)//2;left=batch(titles[:mid],cache);right=batch(titles[mid:],cache)
   result={'query':{'pages':left['query']['pages']+right['query']['pages'],'redirects':left['query'].get('redirects',[])+right['query'].get('redirects',[])}}
 

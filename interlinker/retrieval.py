@@ -48,7 +48,29 @@ class MiniLM:
     def __init__(self):
         from fastembed import TextEmbedding
         self.model=TextEmbedding('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2',cache_dir='local-data/models',threads=2)
-    def encode(self,texts):return normalize(np.array(list(self.model.embed(texts,batch_size=32))))
+    def encode(self,texts):
+        import hashlib,sqlite3
+        from pathlib import Path
+        from importlib.metadata import version
+        Path('local-data').mkdir(exist_ok=True)
+        namespace=str(self.model.model._model_dir)+version('fastembed')
+        keys=[hashlib.sha256((namespace+'\0'+t).encode()).hexdigest() for t in texts]
+        with sqlite3.connect('local-data/embeddings.sqlite3',timeout=60) as c:
+            c.execute('CREATE TABLE IF NOT EXISTS vectors(key TEXT PRIMARY KEY, data BLOB NOT NULL)')
+            found={}
+            for k in set(keys):
+                row=c.execute('SELECT data FROM vectors WHERE key=?',(k,)).fetchone()
+                if row:found[k]=np.frombuffer(row[0],dtype=np.float32)
+            missing={k:t for k,t in zip(keys,texts) if k not in found}
+            ordered=sorted(missing,key=lambda k:len(missing[k]))
+            for start in range(0,len(ordered),32):
+                group=ordered[start:start+32]
+                vectors=list(self.model.embed([missing[k] for k in group],batch_size=32))
+                for k,v in zip(group,vectors):
+                    found[k]=np.asarray(v,dtype=np.float32)
+                    c.execute('INSERT OR IGNORE INTO vectors(key,data) VALUES(?,?)',(k,found[k].tobytes()))
+                c.commit()
+        return normalize(np.array([found[k] for k in keys]))
     def fit(self,texts):return self.encode(texts)
 
 class Engine:
@@ -66,7 +88,7 @@ class Engine:
         self.length=np.array([sum(c.values()) for c in self.counts]);self.avg=max(1,self.length.mean())
         df=Counter(t for c in self.counts for t in c)
         self.idf={t:float(np.log(1+(len(pages)-n+.5)/(n+.5))) for t,n in df.items()}
-        self.title_tokens=[set(tokens(p['title'])) for p in pages]
+        self.title_tokens=[set(tokens(p.get('entity_name',p['title']))) for p in pages]
         self.entities=[set(re.findall(r'\b[A-ZА-ЯЁ][A-ZА-ЯЁ\d-]{1,}\b',d)) for d in self.docs]
         self.query_cache={}
     def retrieve(self,source,block,mode='hybrid',k=20):
@@ -92,7 +114,7 @@ class Engine:
             candidates.append(dict(target=p['url'],index=i,retrieval=float(score),components=comp))
         return sorted(candidates,key=lambda c:-c['retrieval'])[:k]
     def anchor(self,text,target_index):
-        expected=lemmas(self.pages[target_index]['title'])
+        expected=lemmas(self.pages[target_index].get('entity_name',self.pages[target_index]['title']))
         words=list(re.finditer(r'\w+',text));best=None
         stems=[lemmas(w.group()) for w in words]
         for i in range(len(words)):
@@ -115,6 +137,8 @@ class Engine:
             for c in candidates:
                 a=self.anchor(b['text'],c['index'])
                 if not a or a['quality']<.65:rejections['weak_or_missing_anchor']+=1;continue
+                from .geography import intent_allowed
+                if not intent_allowed(b['text'],self.pages[c['index']],a['anchor']):rejections['destination_intent_mismatch']+=1;continue
                 if mode!='lexical' and c['components']['semantic']<semantic_min:rejections['low_semantic']+=1;continue
                 score=.65*c['retrieval']+.35*a['quality']
                 if score<threshold:rejections['low_score']+=1;continue
