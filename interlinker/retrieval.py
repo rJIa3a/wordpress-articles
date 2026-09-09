@@ -137,6 +137,8 @@ class Engine:
             for c in candidates:
                 a=self.anchor(b['text'],c['index'])
                 if not a or a['quality']<.65:rejections['weak_or_missing_anchor']+=1;continue
+                from .entities import noncity_name
+                if self.pages[c['index']].get('entity_name') and noncity_name(b['text'],a['start']):rejections['noncity_named_entity']+=1;continue
                 from .geography import intent_allowed
                 if not intent_allowed(b['text'],self.pages[c['index']],a['anchor']):rejections['destination_intent_mismatch']+=1;continue
                 if mode!='lexical' and c['components']['semantic']<semantic_min:rejections['low_semantic']+=1;continue

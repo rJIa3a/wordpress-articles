@@ -41,6 +41,7 @@ def generate(site):
    annotate(pages)
   engine=Engine(pages,Ollama() if cfg['provider']=='ollama' else MiniLM() if cfg['provider']=='minilm' else None)
   rules=db.rows('SELECT * FROM seo_priorities WHERE site_id=?',(site,));by={p['url']:p for p in pages}
+  diagnostics=collections.Counter();page_diagnostics=[]
   accepted=[];repeat=collections.Counter((l['target'],l['anchor'].casefold()) for p in pages for l in p['links'])
   with db.connect() as c:c.execute("DELETE FROM recommendations WHERE site_id=? AND status='pending' AND NOT EXISTS (SELECT 1 FROM change_history h WHERE h.recommendation_id=recommendations.id)",(site,))
   existing=db.rows('SELECT * FROM recommendations WHERE site_id=?',(site,));existing_keys={(r['source'],r['target'],r['block']) for r in existing if r['status']!='stale'}
@@ -48,29 +49,33 @@ def generate(site):
    if r['status'] in ('approved','pending'):repeat[(r['target'],r['anchor'].casefold())]+=1
   for p in pages:
    if priority(p,rules)[1]:continue
-   recs,_,_=engine.recommend(p,threshold=cfg['minimum_score']/100)
+   recs,_,reasons=engine.recommend(p,threshold=cfg['minimum_score']/100)
+   diagnostics.update(reasons);page_diagnostics.append(dict(source=p['url'],retrieval_accepted=len(recs),rejections=reasons))
    used={l['target'] for l in p['links']};kept=sum(r['source']==p['url'] and r['status'] in ('approved','pending') for r in existing)
    for r in recs:
     if cfg['contextual']:
      from .context import judge
      b=next(b for b in p['blocks'] if b['id']==r['block'])
      decision=judge(p,b,[by[r['target']]],cfg['confidence_threshold'])
-     if not decision:continue
+     if not decision:diagnostics['context_rejected']+=1;continue
      r['anchor']=decision['anchor'];r['context_reason']=decision['reason'];r['confidence']=decision['confidence']
     target=by[r['target']];weight,blocked=priority(target,rules)
-    if blocked or r['target'] in used or target['fingerprint']==p['fingerprint']:continue
-    if (p['url'],r['target'],r['block']) in existing_keys:continue
-    if repeat[(r['target'],r['anchor'].casefold())]>=cfg['anchor_repetition_limit']:continue
+    if blocked:diagnostics['blacklisted_target']+=1;continue
+    if r['target'] in used:diagnostics['existing_target']+=1;continue
+    if target['fingerprint']==p['fingerprint']:diagnostics['identical_page']+=1;continue
+    if (p['url'],r['target'],r['block']) in existing_keys:diagnostics['previously_reviewed']+=1;continue
+    if repeat[(r['target'],r['anchor'].casefold())]>=cfg['anchor_repetition_limit']:diagnostics['anchor_repetition']+=1;continue
     b=next(b for b in p['blocks'] if b['id']==r['block'])
     try:new=insert_preview(b['html'],r['anchor'],r['target'])
-    except ValueError:continue
-    if kept>=cfg['max_per_page']:break
+    except ValueError:diagnostics['unsafe_html_location']+=1;continue
+    if kept>=cfg['max_per_page']:diagnostics['page_limit']+=1;break
     # Priority bonus only after relevance gate. Never rescues a rejected match.
     r.update(score=min(100,r['score']+min(5,weight)),source_title=p['title'],target_title=target['title'],old_html=b['html'],new_html=new,original_text=b['text'],provider=cfg['provider'],priority=weight)
     r['components']['seo_priority_bonus']=min(5,weight)
     accepted.append(r);kept+=1;used.add(r['target']);repeat[(r['target'],r['anchor'].casefold())]+=1
   with db.connect() as c:
    for r in accepted:c.execute("INSERT INTO recommendations(site_id,source,target,block,anchor,score,data) VALUES(?,?,?,?,?,?,?) ON CONFLICT(site_id,source,target,block) DO UPDATE SET anchor=excluded.anchor,score=excluded.score,data=excluded.data,status='pending',approved=NULL WHERE recommendations.status='stale'",(site,r['source'],r['target'],r['block'],r['anchor'],r['score'],json.dumps(r,ensure_ascii=False)))
+  with db.connect() as c:c.execute('INSERT INTO generation_diagnostics(site_id,data) VALUES(?,?) ON CONFLICT(site_id) DO UPDATE SET data=excluded.data,created=CURRENT_TIMESTAMP',(site,json.dumps(dict(provider=cfg['provider'],accepted=len(accepted),rejections=dict(diagnostics),pages=page_diagnostics),ensure_ascii=False)))
   return len(accepted)
 
 def import_exports(folder):

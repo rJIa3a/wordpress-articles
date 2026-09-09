@@ -110,3 +110,9 @@ def start(site:int,kind:Literal['crawl','generate'],tasks:BackgroundTasks):
  tasks.add_task(task,run,site,kind);return {'id':run}
 @app.get('/api/sites/{site}/jobs')
 def jobs(site:int):return db.rows('SELECT * FROM crawl_runs WHERE site_id=? ORDER BY id DESC LIMIT 10',(site,))
+
+@app.get('/api/sites/{site}/diagnostics')
+def diagnostics(site:int):
+ require_site(site)
+ rows=db.rows('SELECT data,created FROM generation_diagnostics WHERE site_id=?',(site,))
+ return {**json.loads(rows[0]['data']),'created':rows[0]['created']} if rows else {'accepted':0,'rejections':{},'pages':[]}

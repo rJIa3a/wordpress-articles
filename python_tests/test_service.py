@@ -62,3 +62,10 @@ def test_origin_and_missing_site(client):
 def test_db_requires_configuration(client,monkeypatch):
  for name in ['WP_DB_HOST','WP_DB_NAME','WP_DB_USER','WP_DB_PASSWORD','WP_SITE_URL']:monkeypatch.delenv(name,raising=False)
  assert client.post('/api/import-database',json={}).status_code==422
+
+def test_generation_diagnostics(client):
+ seed(client);service.generate(1)
+ data=client.get('/api/sites/1/diagnostics').json()
+ assert data['pages'] and data['accepted']>0 and data['rejections']
+ assert all(v>=0 for v in data['rejections'].values())
+ assert client.get('/api/sites/999/diagnostics').status_code==404

@@ -54,3 +54,17 @@ def test_embedding_cache_preserves_order_and_resumes(tmp_path, monkeypatch):
  assert calls==['a','longer']
  np.testing.assert_allclose(first[[1,0]],second)
  np.testing.assert_allclose(np.linalg.norm(second,axis=1),1)
+
+def test_city_disambiguation_preserves_actual_city_mentions():
+ from interlinker.entities import noncity_name
+ for text in ['на реке Воронеж','у реки Лесной Воронеж','улица Москва']:
+  assert noncity_name(text,text.rfind(' ')+1)
+ for text in ['город Воронеж','из Москвы в Воронеж','на реке Дон находится Воронеж']:
+  assert not noncity_name(text,text.rfind(' ')+1)
+
+def test_refinement_excludes_test_sources_and_labels():
+ from city_benchmark.refine import development_data
+ pages=[dict(url=u,title=t,blocks=[dict(id='0',section='',text='Путь из Москвы в Казань описан подробно.')]) for u,t in [('a','Москва'),('b','Казань'),('c','Самара')]]
+ gold=[dict(source='c',target='b',anchor='Секретныйалиас')]*2
+ r,_,g=development_data(pages,gold,{'a':'train','b':'dev','c':'test'})
+ assert r and all(x['source']!='c' for x in r) and not g

@@ -19,6 +19,7 @@ def init():
  CREATE TABLE IF NOT EXISTS seo_priorities(id INTEGER PRIMARY KEY,site_id INTEGER REFERENCES sites(id),kind TEXT,value TEXT,weight REAL,blocked INTEGER DEFAULT 0,UNIQUE(site_id,kind,value));
  CREATE TABLE IF NOT EXISTS crawl_runs(id INTEGER PRIMARY KEY,site_id INTEGER REFERENCES sites(id),status TEXT,visited INTEGER DEFAULT 0,stored INTEGER DEFAULT 0,error TEXT,created TEXT DEFAULT CURRENT_TIMESTAMP,finished TEXT);
  CREATE TABLE IF NOT EXISTS change_history(id INTEGER PRIMARY KEY,recommendation_id INTEGER REFERENCES recommendations(id),action TEXT,old_html TEXT,new_html TEXT,created TEXT DEFAULT CURRENT_TIMESTAMP);
+ CREATE TABLE IF NOT EXISTS generation_diagnostics(site_id INTEGER PRIMARY KEY REFERENCES sites(id),data TEXT NOT NULL,created TEXT DEFAULT CURRENT_TIMESTAMP);
  CREATE TABLE IF NOT EXISTS settings(site_id INTEGER PRIMARY KEY REFERENCES sites(id),data TEXT);
  ''')
 def rows(sql,args=()):
