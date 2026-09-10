@@ -114,9 +114,13 @@ class Engine:
             candidates.append(dict(target=p['url'],index=i,retrieval=float(score),components=comp))
         return sorted(candidates,key=lambda c:-c['retrieval'])[:k]
     def anchor(self,text,target_index):
-        expected=lemmas(self.pages[target_index].get('entity_name',self.pages[target_index]['title']))
-        words=list(re.finditer(r'\w+',text));best=None
-        stems=[lemmas(w.group()) for w in words]
+        normalizer=lemmas
+        if self.pages[target_index].get('entity_name'):
+            from .city_morphology import city_lemma
+            normalizer=lambda text: {city_lemma(w) for w in re.findall(r'\w+(?:-\w+)*',text) if w.lower() not in STOP}
+        expected=normalizer(self.pages[target_index].get('entity_name',self.pages[target_index]['title']))
+        words=list(re.finditer(r'\w+(?:-\w+)*',text));best=None
+        stems=[normalizer(w.group()) for w in words]
         for i in range(len(words)):
             for n in range(1,min(7,len(words)-i)+1):
                 start,end=words[i].start(),words[i+n-1].end(); phrase=text[start:end]

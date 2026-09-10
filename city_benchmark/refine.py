@@ -30,18 +30,19 @@ def local_features(record, text, section, occurrence, section_occurrence, count)
             int('эконом' in s),int(any(x in s for x in ['культур','спорт','образован'])),
             0,np.log1p(count),int(noncity_name(text,start)),int(text.count('\n')>=4)]
 
-def development_data(pages,gold,split):
+def development_data(pages,gold,split,geographic=False):
     # Test article contents can be target documents, but never source examples or labels.
     sources={u for u,s in split.items() if s in ('train','dev')}
     safe_gold=[g for g in gold if g['source'] in sources]
-    records,texts=candidates(pages,[g for g in safe_gold if split[g['source']]=='train'],split)
+    records,texts=candidates(pages,[g for g in safe_gold if split[g['source']]=='train'],split,geographic)
     return [r for r in records if r['source'] in sources],texts,safe_gold
 
-def run(folder):
+def run(folder,geographic=False):
     d=Path(folder);pages=json.loads((d/'corpus.json').read_text());manifest=json.loads((d/'manifest.json').read_text())
     if not manifest['complete']:raise ValueError('Corpus incomplete')
     split=manifest['source_split'];gold=json.loads((d/'gold.json').read_text())
-    records,texts,gold=development_data(pages,gold,split)
+    records,texts,gold=development_data(pages,gold,split,geographic)
+    output_name='refinement-morphology' if geographic else 'refinement'
     print('Train/dev candidates:',len(records),flush=True)
     by={p['url']:p for p in pages};pidx={p['url']:i for i,p in enumerate(pages)}
     blocks={(p['url'],b['id']):b for p in pages for b in p['blocks']}
@@ -71,9 +72,11 @@ def run(folder):
             pred=select(dr,scores,threshold);m=metrics(pred,dg,set(by))
             run=dict(name=name,threshold=threshold,metrics=m);runs.append(run);predictions[(name,threshold)]=pred
             print(name,threshold,json.dumps(m['block']),flush=True)
+    (d/output_name).mkdir(exist_ok=True)
+    (d/output_name/'scored-dev.json').write_text(json.dumps([dict(r,score=float(score),section=blocks[r['source'],r['block']]['section']) for r,score in zip(dr,scores)],ensure_ascii=False))
     best=max(runs,key=lambda x:x['metrics']['block']['f05']);pred=predictions[best['name'],best['threshold']]
-    out=d/'refinement';out.mkdir(exist_ok=True)
-    result=dict(split='dev_only',source_articles=sum(s=='dev' for s in split.values()),train_articles=sum(s=='train' for s in split.values()),features=FEATURES[:8]+EXTRA,runs=runs,selected=best,test_evaluated=False,corpus_sha256=hashlib.sha256((d/'corpus.json').read_bytes()).hexdigest())
+    out=d/output_name;out.mkdir(exist_ok=True)
+    result=dict(geographic_morphology=geographic,split='dev_only',source_articles=sum(s=='dev' for s in split.values()),train_articles=sum(s=='train' for s in split.values()),features=FEATURES[:8]+EXTRA,runs=runs,selected=best,test_evaluated=False,corpus_sha256=hashlib.sha256((d/'corpus.json').read_bytes()).hexdigest())
     (out/'results.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
     (out/'predictions.json').write_text(json.dumps(pred,ensure_ascii=False,indent=2))
     # Deterministic disagreements for manual review on dev only.
@@ -86,4 +89,4 @@ def run(folder):
     print('SELECTED',json.dumps(best),flush=True)
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--data',default='local-data/cities');args=parser.parse_args();run(args.data)
+    parser=argparse.ArgumentParser();parser.add_argument('--data',default='local-data/cities');parser.add_argument('--city-morphology',action='store_true');args=parser.parse_args();run(args.data,args.city_morphology)

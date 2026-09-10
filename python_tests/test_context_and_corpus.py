@@ -68,3 +68,27 @@ def test_refinement_excludes_test_sources_and_labels():
  gold=[dict(source='c',target='b',anchor='Секретныйалиас')]*2
  r,_,g=development_data(pages,gold,{'a':'train','b':'dev','c':'test'})
  assert r and all(x['source']!='c' for x in r) and not g
+
+def test_section_selection_requires_distance_confidence_and_no_overlap():
+ from city_benchmark.selection import select_sections
+ def rec(block,section,score,target='b',start=0,end=6):return dict(source='a',target=target,block=str(block),section=section,score=score,start=start,end=end,anchor='Москва')
+ records=[rec(0,'География',.9),rec(1,'Транспорт',.85),rec(4,'География',.8),rec(8,'История',.7),rec(12,'Культура',.6),rec(8,'История',.69,'c'),rec(20,'Спорт',.95,'a')]
+ selected=select_sections(records)
+ assert [(r['block'],r['target']) for r in selected]==[('0','b'),('8','b')]
+ assert len(select_sections(records,max_per_target=1))==2
+
+def test_geographic_morphology_recovers_instrumental_and_compound_city():
+ from city_benchmark.experiment import candidates
+ pages=[dict(url='a',title='Москва',blocks=[dict(id='0',section='Транспорт',text='Связь с Новосибирском и Переславлем-Залесским поддерживается регулярно.')]),dict(url='b',title='Новосибирск',blocks=[]),dict(url='c',title='Переславль-Залесский',blocks=[])]
+ records,_=candidates(pages,[],{'a':'train'},geographic=True)
+ assert {r['target'] for r in records}=={'b','c'}
+ assert {r['anchor'] for r in records}=={'Новосибирском','Переславлем-Залесским'}
+
+def test_site_city_anchor_uses_geographic_morphology():
+ from interlinker.retrieval import Engine
+ engine=Engine.__new__(Engine)
+ engine.pages=[dict(title='Что посмотреть в Новосибирске',entity_name='Новосибирск')]
+ r=engine.anchor('Сравнение с Новосибирском поможет выбрать маршрут.',0)
+ assert r['anchor']=='Новосибирском' and r['quality']==1
+ engine.pages=[dict(title='Переславль-Залесский',entity_name='Переславль-Залесский')]
+ assert engine.anchor('Дорога к Переславлю-Залесскому.',0)['anchor']=='Переславлю-Залесскому'

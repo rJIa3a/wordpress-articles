@@ -7,19 +7,22 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import normalize
 from interlinker.retrieval import lemma,STOP,MiniLM
 
-def words(text):return [(m.group(),m.start(),m.end(),lemma(m.group().casefold())) for m in re.finditer(r'[А-Яа-яЁёA-Za-z]+(?:-[А-Яа-яЁёA-Za-z]+)*',text)]
-def key(text):return tuple(w[3] for w in words(text))
+def words(text,geographic=False):
+ from interlinker.city_morphology import city_lemma
+ normalizer=city_lemma if geographic else lemma
+ return [(m.group(),m.start(),m.end(),normalizer(m.group().casefold())) for m in re.finditer(r'[А-Яа-яЁёA-Za-z]+(?:-[А-Яа-яЁёA-Za-z]+)*',text)]
+def key(text,geographic=False):return tuple(w[3] for w in words(text,geographic))
 BANNED={'город','столица','область','район','россия','центр','страна','посёлок','городок','республика','он','она','здесь','там'}
 FEATURES=['tfidf_context','early_in_page','first_target_mention','alias_words','unambiguous','train_anchor_frequency','history_section','geography_section','neural_context']
 
-def candidates(pages,gold,split):
+def candidates(pages,gold,split,geographic=False):
  registry=collections.defaultdict(set);known={p['url'] for p in pages};freq=collections.Counter()
  for p in pages:
-  k=key(re.sub(r'\s*\([^)]*\)','',p['title']))
+  k=key(re.sub(r'\s*\([^)]*\)','',p['title']),geographic)
   if k:registry[k].add(p['url'])
  for g in gold:
   if split.get(g['source'])!='train' or g['target'] not in known:continue
-  k=key(g['anchor'])
+  k=key(g['anchor'],geographic)
   if k and len(k)<=5 and not (set(k)&BANNED) and not any(w in STOP for w in k):freq[(k,g['target'])]+=1
  for (k,t),n in freq.items():
   if n>=2:registry[k].add(t)
@@ -27,7 +30,7 @@ def candidates(pages,gold,split):
  for p in pages:
   occurrence=collections.Counter()
   for bi,b in enumerate(p['blocks']):
-   ws=words(b['text']);i=0;blockkey=p['url']+'#'+b['id'];texts[blockkey]=b['section']+'\n'+b['text'][:1600]
+   ws=words(b['text'],geographic);i=0;blockkey=p['url']+'#'+b['id'];texts[blockkey]=b['section']+'\n'+b['text'][:1600]
    while i<len(ws):
     found=False
     for size in range(min(maxwords,len(ws)-i),0,-1):
