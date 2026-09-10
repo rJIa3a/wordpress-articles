@@ -1,0 +1,739 @@
+{
+  "sentence_context": true,
+  "geographic_morphology": true,
+  "split": "dev_only",
+  "source_articles": 172,
+  "train_articles": 805,
+  "features": [
+    "tfidf_context",
+    "early_in_page",
+    "first_target_mention",
+    "alias_words",
+    "unambiguous",
+    "train_anchor_frequency",
+    "history_section",
+    "geography_section",
+    "mention_position",
+    "block_length",
+    "section_first_mention",
+    "log_occurrence",
+    "transport",
+    "distance",
+    "biography",
+    "sport",
+    "institution",
+    "geography_local",
+    "history_local",
+    "quoted_name",
+    "section_transport",
+    "section_people",
+    "section_economy",
+    "section_culture",
+    "context_tfidf",
+    "target_mentions",
+    "noncity_name",
+    "list_block",
+    "sentence_position",
+    "sentence_fraction",
+    "parenthetical",
+    "capitalized_words",
+    "sentence_tfidf"
+  ],
+  "runs": [
+    {
+      "name": "baseline_logistic",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1179,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 1179,
+          "gold": 1107,
+          "precision": 0.6327396098388465,
+          "recall": 0.6738934056007226,
+          "f05": 0.640563283530826
+        },
+        "block": {
+          "hits": 675,
+          "predicted": 1179,
+          "gold": 1468,
+          "precision": 0.5725190839694656,
+          "recall": 0.4598092643051771,
+          "f05": 0.5457632600258733
+        },
+        "span": {
+          "hits": 500,
+          "predicted": 1179,
+          "gold": 1515,
+          "precision": 0.42408821034775235,
+          "recall": 0.33003300330033003,
+          "f05": 0.4012197079120527
+        }
+      }
+    },
+    {
+      "name": "baseline_logistic",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 697,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 475,
+          "predicted": 697,
+          "gold": 1107,
+          "precision": 0.6814921090387375,
+          "recall": 0.4290876242095754,
+          "f05": 0.6097560975609757
+        },
+        "block": {
+          "hits": 425,
+          "predicted": 697,
+          "gold": 1468,
+          "precision": 0.6097560975609756,
+          "recall": 0.2895095367847411,
+          "f05": 0.4992951127819549
+        },
+        "span": {
+          "hits": 303,
+          "predicted": 697,
+          "gold": 1515,
+          "precision": 0.4347202295552367,
+          "recall": 0.2,
+          "f05": 0.35207994422495925
+        }
+      }
+    },
+    {
+      "name": "baseline_logistic",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 322,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 252,
+          "predicted": 322,
+          "gold": 1107,
+          "precision": 0.782608695652174,
+          "recall": 0.22764227642276422,
+          "f05": 0.5260960334029228
+        },
+        "block": {
+          "hits": 224,
+          "predicted": 322,
+          "gold": 1468,
+          "precision": 0.6956521739130435,
+          "recall": 0.15258855585831063,
+          "f05": 0.40638606676342526
+        },
+        "span": {
+          "hits": 157,
+          "predicted": 322,
+          "gold": 1515,
+          "precision": 0.48757763975155277,
+          "recall": 0.10363036303630363,
+          "f05": 0.28005708169818055
+        }
+      }
+    },
+    {
+      "name": "baseline_logistic",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 106,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 98,
+          "predicted": 106,
+          "gold": 1107,
+          "precision": 0.9245283018867925,
+          "recall": 0.08852755194218609,
+          "f05": 0.3200522534291313
+        },
+        "block": {
+          "hits": 95,
+          "predicted": 106,
+          "gold": 1468,
+          "precision": 0.8962264150943396,
+          "recall": 0.06471389645776567,
+          "f05": 0.25105708245243125
+        },
+        "span": {
+          "hits": 65,
+          "predicted": 106,
+          "gold": 1515,
+          "precision": 0.6132075471698113,
+          "recall": 0.0429042904290429,
+          "f05": 0.16761217122227953
+        }
+      }
+    },
+    {
+      "name": "context_logistic",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1225,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 829,
+          "predicted": 1225,
+          "gold": 1107,
+          "precision": 0.676734693877551,
+          "recall": 0.7488708220415538,
+          "f05": 0.6900283003162976
+        },
+        "block": {
+          "hits": 756,
+          "predicted": 1225,
+          "gold": 1468,
+          "precision": 0.6171428571428571,
+          "recall": 0.5149863760217984,
+          "f05": 0.5935929648241206
+        },
+        "span": {
+          "hits": 569,
+          "predicted": 1225,
+          "gold": 1515,
+          "precision": 0.46448979591836737,
+          "recall": 0.37557755775577556,
+          "f05": 0.4434918160561185
+        }
+      }
+    },
+    {
+      "name": "context_logistic",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 848,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 634,
+          "predicted": 848,
+          "gold": 1107,
+          "precision": 0.7476415094339622,
+          "recall": 0.5727190605239386,
+          "f05": 0.7046010224494332
+        },
+        "block": {
+          "hits": 575,
+          "predicted": 848,
+          "gold": 1468,
+          "precision": 0.6780660377358491,
+          "recall": 0.3916893732970027,
+          "f05": 0.5915637860082305
+        },
+        "span": {
+          "hits": 435,
+          "predicted": 848,
+          "gold": 1515,
+          "precision": 0.5129716981132075,
+          "recall": 0.2871287128712871,
+          "f05": 0.44324434481353164
+        }
+      }
+    },
+    {
+      "name": "context_logistic",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 539,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 429,
+          "predicted": 539,
+          "gold": 1107,
+          "precision": 0.7959183673469388,
+          "recall": 0.3875338753387534,
+          "f05": 0.6573705179282868
+        },
+        "block": {
+          "hits": 391,
+          "predicted": 539,
+          "gold": 1468,
+          "precision": 0.725417439703154,
+          "recall": 0.26634877384196187,
+          "f05": 0.5394591611479029
+        },
+        "span": {
+          "hits": 295,
+          "predicted": 539,
+          "gold": 1515,
+          "precision": 0.5473098330241187,
+          "recall": 0.19471947194719472,
+          "f05": 0.4017978752383547
+        }
+      }
+    },
+    {
+      "name": "context_logistic",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 227,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 191,
+          "predicted": 227,
+          "gold": 1107,
+          "precision": 0.8414096916299559,
+          "recall": 0.17253839205058719,
+          "f05": 0.4739454094292804
+        },
+        "block": {
+          "hits": 176,
+          "predicted": 227,
+          "gold": 1468,
+          "precision": 0.775330396475771,
+          "recall": 0.11989100817438691,
+          "f05": 0.37037037037037035
+        },
+        "span": {
+          "hits": 132,
+          "predicted": 227,
+          "gold": 1515,
+          "precision": 0.5814977973568282,
+          "recall": 0.08712871287128712,
+          "f05": 0.2723895996698308
+        }
+      }
+    },
+    {
+      "name": "context_trees",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1246,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 865,
+          "predicted": 1246,
+          "gold": 1107,
+          "precision": 0.6942215088282504,
+          "recall": 0.7813911472448057,
+          "f05": 0.710064028895091
+        },
+        "block": {
+          "hits": 796,
+          "predicted": 1246,
+          "gold": 1468,
+          "precision": 0.6388443017656501,
+          "recall": 0.5422343324250681,
+          "f05": 0.6168629882207068
+        },
+        "span": {
+          "hits": 594,
+          "predicted": 1246,
+          "gold": 1515,
+          "precision": 0.4767255216693419,
+          "recall": 0.3920792079207921,
+          "f05": 0.45699338359747654
+        }
+      }
+    },
+    {
+      "name": "context_trees",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 905,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 700,
+          "predicted": 905,
+          "gold": 1107,
+          "precision": 0.7734806629834254,
+          "recall": 0.6323396567299007,
+          "f05": 0.7404273323460969
+        },
+        "block": {
+          "hits": 645,
+          "predicted": 905,
+          "gold": 1468,
+          "precision": 0.712707182320442,
+          "recall": 0.4393732970027248,
+          "f05": 0.6338443396226414
+        },
+        "span": {
+          "hits": 497,
+          "predicted": 905,
+          "gold": 1515,
+          "precision": 0.549171270718232,
+          "recall": 0.32805280528052805,
+          "f05": 0.48393378773125606
+        }
+      }
+    },
+    {
+      "name": "context_trees",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 593,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 491,
+          "predicted": 593,
+          "gold": 1107,
+          "precision": 0.8279932546374368,
+          "recall": 0.44354110207768743,
+          "f05": 0.7056625467088244
+        },
+        "block": {
+          "hits": 456,
+          "predicted": 593,
+          "gold": 1468,
+          "precision": 0.7689713322091062,
+          "recall": 0.3106267029972752,
+          "f05": 0.5937499999999999
+        },
+        "span": {
+          "hits": 341,
+          "predicted": 593,
+          "gold": 1515,
+          "precision": 0.5750421585160203,
+          "recall": 0.22508250825082507,
+          "f05": 0.4386416259325958
+        }
+      }
+    },
+    {
+      "name": "context_trees",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 163,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 153,
+          "predicted": 163,
+          "gold": 1107,
+          "precision": 0.9386503067484663,
+          "recall": 0.13821138211382114,
+          "f05": 0.434906196702672
+        },
+        "block": {
+          "hits": 151,
+          "predicted": 163,
+          "gold": 1468,
+          "precision": 0.9263803680981595,
+          "recall": 0.10286103542234333,
+          "f05": 0.3561320754716982
+        },
+        "span": {
+          "hits": 101,
+          "predicted": 163,
+          "gold": 1515,
+          "precision": 0.6196319018404908,
+          "recall": 0.06666666666666667,
+          "f05": 0.2330410706045224
+        }
+      }
+    },
+    {
+      "name": "entity_context_trees",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1249,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 866,
+          "predicted": 1249,
+          "gold": 1107,
+          "precision": 0.6933546837469976,
+          "recall": 0.7822944896115628,
+          "f05": 0.7094871374733737
+        },
+        "block": {
+          "hits": 798,
+          "predicted": 1249,
+          "gold": 1468,
+          "precision": 0.6389111289031225,
+          "recall": 0.5435967302452316,
+          "f05": 0.6172648514851485
+        },
+        "span": {
+          "hits": 600,
+          "predicted": 1249,
+          "gold": 1515,
+          "precision": 0.4803843074459568,
+          "recall": 0.39603960396039606,
+          "f05": 0.4607587160190447
+        }
+      }
+    },
+    {
+      "name": "entity_context_trees",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 904,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 702,
+          "predicted": 904,
+          "gold": 1107,
+          "precision": 0.7765486725663717,
+          "recall": 0.6341463414634146,
+          "f05": 0.7431717128943467
+        },
+        "block": {
+          "hits": 645,
+          "predicted": 904,
+          "gold": 1468,
+          "precision": 0.713495575221239,
+          "recall": 0.4393732970027248,
+          "f05": 0.634343036978757
+        },
+        "span": {
+          "hits": 501,
+          "predicted": 904,
+          "gold": 1515,
+          "precision": 0.5542035398230089,
+          "recall": 0.3306930693069307,
+          "f05": 0.48820892613525624
+        }
+      }
+    },
+    {
+      "name": "entity_context_trees",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 599,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 497,
+          "predicted": 599,
+          "gold": 1107,
+          "precision": 0.8297161936560935,
+          "recall": 0.44896115627822947,
+          "f05": 0.7093919497573509
+        },
+        "block": {
+          "hits": 460,
+          "predicted": 599,
+          "gold": 1468,
+          "precision": 0.7679465776293823,
+          "recall": 0.3133514986376022,
+          "f05": 0.5952380952380953
+        },
+        "span": {
+          "hits": 347,
+          "predicted": 599,
+          "gold": 1515,
+          "precision": 0.5792988313856428,
+          "recall": 0.22904290429042903,
+          "f05": 0.44362055740219897
+        }
+      }
+    },
+    {
+      "name": "entity_context_trees",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 165,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 157,
+          "predicted": 165,
+          "gold": 1107,
+          "precision": 0.9515151515151515,
+          "recall": 0.14182475158084915,
+          "f05": 0.4442558007923034
+        },
+        "block": {
+          "hits": 155,
+          "predicted": 165,
+          "gold": 1468,
+          "precision": 0.9393939393939394,
+          "recall": 0.1055858310626703,
+          "f05": 0.3641917293233083
+        },
+        "span": {
+          "hits": 102,
+          "predicted": 165,
+          "gold": 1515,
+          "precision": 0.6181818181818182,
+          "recall": 0.06732673267326733,
+          "f05": 0.23448275862068968
+        }
+      }
+    },
+    {
+      "name": "sentence_context_trees",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1256,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 878,
+          "predicted": 1256,
+          "gold": 1107,
+          "precision": 0.6990445859872612,
+          "recall": 0.7931345980126467,
+          "f05": 0.7160332735279726
+        },
+        "block": {
+          "hits": 810,
+          "predicted": 1256,
+          "gold": 1468,
+          "precision": 0.6449044585987261,
+          "recall": 0.5517711171662125,
+          "f05": 0.6238447319778189
+        },
+        "span": {
+          "hits": 606,
+          "predicted": 1256,
+          "gold": 1515,
+          "precision": 0.482484076433121,
+          "recall": 0.4,
+          "f05": 0.463373604526686
+        }
+      }
+    },
+    {
+      "name": "sentence_context_trees",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 942,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 727,
+          "predicted": 942,
+          "gold": 1107,
+          "precision": 0.7717622080679406,
+          "recall": 0.6567299006323396,
+          "f05": 0.7456410256410256
+        },
+        "block": {
+          "hits": 670,
+          "predicted": 942,
+          "gold": 1468,
+          "precision": 0.7112526539278131,
+          "recall": 0.4564032697547684,
+          "f05": 0.6398013750954927
+        },
+        "span": {
+          "hits": 516,
+          "predicted": 942,
+          "gold": 1515,
+          "precision": 0.5477707006369427,
+          "recall": 0.3405940594059406,
+          "f05": 0.4883588869960249
+        }
+      }
+    },
+    {
+      "name": "sentence_context_trees",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 594,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 500,
+          "predicted": 594,
+          "gold": 1107,
+          "precision": 0.8417508417508418,
+          "recall": 0.45167118337850043,
+          "f05": 0.717772035601493
+        },
+        "block": {
+          "hits": 467,
+          "predicted": 594,
+          "gold": 1468,
+          "precision": 0.7861952861952862,
+          "recall": 0.3181198910081744,
+          "f05": 0.6074401664932363
+        },
+        "span": {
+          "hits": 354,
+          "predicted": 594,
+          "gold": 1515,
+          "precision": 0.5959595959595959,
+          "recall": 0.23366336633663368,
+          "f05": 0.45489591364687737
+        }
+      }
+    },
+    {
+      "name": "sentence_context_trees",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 172,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 159,
+          "predicted": 172,
+          "gold": 1107,
+          "precision": 0.9244186046511628,
+          "recall": 0.14363143631436315,
+          "f05": 0.44289693593314766
+        },
+        "block": {
+          "hits": 155,
+          "predicted": 172,
+          "gold": 1468,
+          "precision": 0.9011627906976745,
+          "recall": 0.1055858310626703,
+          "f05": 0.35946196660482377
+        },
+        "span": {
+          "hits": 106,
+          "predicted": 172,
+          "gold": 1515,
+          "precision": 0.6162790697674418,
+          "recall": 0.06996699669966996,
+          "f05": 0.24058102587380847
+        }
+      }
+    }
+  ],
+  "selected": {
+    "name": "sentence_context_trees",
+    "threshold": 0.5,
+    "metrics": {
+      "suggestions": 942,
+      "all_wikipedia_links": 26159,
+      "city_links": 1515,
+      "edge": {
+        "hits": 727,
+        "predicted": 942,
+        "gold": 1107,
+        "precision": 0.7717622080679406,
+        "recall": 0.6567299006323396,
+        "f05": 0.7456410256410256
+      },
+      "block": {
+        "hits": 670,
+        "predicted": 942,
+        "gold": 1468,
+        "precision": 0.7112526539278131,
+        "recall": 0.4564032697547684,
+        "f05": 0.6398013750954927
+      },
+      "span": {
+        "hits": 516,
+        "predicted": 942,
+        "gold": 1515,
+        "precision": 0.5477707006369427,
+        "recall": 0.3405940594059406,
+        "f05": 0.4883588869960249
+      }
+    }
+  },
+  "test_evaluated": false,
+  "corpus_sha256": "c848bfdf087643b1c59736c76bfc4b9aec103995eacff19e17a3e792756e08ed"
+}

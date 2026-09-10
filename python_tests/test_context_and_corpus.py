@@ -92,3 +92,21 @@ def test_site_city_anchor_uses_geographic_morphology():
  assert r['anchor']=='Новосибирском' and r['quality']==1
  engine.pages=[dict(title='Переславль-Залесский',entity_name='Переславль-Залесский')]
  assert engine.anchor('Дорога к Переславлю-Залесскому.',0)['anchor']=='Переславлю-Залесскому'
+
+def test_sentence_context_keeps_original_anchor_offsets():
+ from city_benchmark.sentences import sentence_span,sentence_features
+ text='Первое предложение. Поездка в Москву (через Тулу) запланирована. Дальше идёт другой текст.'
+ start=text.index('Тулу');end=start+4
+ a,z=sentence_span(text,start,end)
+ assert text[a:z].strip()=='Поездка в Москву (через Тулу) запланирована.'
+ assert text[a:z][start-a:end-a]=='Тулу'
+ assert sentence_features(text,start,end)[2]==1
+ with pytest.raises(ValueError):sentence_span(text,-1,3)
+
+def test_bootstrap_metrics_count_unique_block_targets():
+ import numpy as np
+ from city_benchmark.uncertainty import counts_by_source,measures
+ r=dict(source='a',block='0',target='b')
+ counts=counts_by_source([r,r],[r],['a','c'])
+ np.testing.assert_array_equal(counts,[[1,1,1],[0,0,0]])
+ np.testing.assert_array_equal(measures(counts),[[1,1,1],[0,0,0]])
