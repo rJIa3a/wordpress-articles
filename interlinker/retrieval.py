@@ -45,32 +45,36 @@ class Ollama:
 
 class MiniLM:
     name='minilm'
-    def __init__(self):
+    def __init__(self,threads=2):
         from fastembed import TextEmbedding
-        self.model=TextEmbedding('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2',cache_dir='local-data/models',threads=2)
+        self.model=TextEmbedding('sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2',cache_dir='local-data/models',threads=threads)
     def encode(self,texts):
-        import hashlib,sqlite3
+        import hashlib,os,uuid
         from pathlib import Path
         from importlib.metadata import version
-        Path('local-data').mkdir(exist_ok=True)
+        if not texts:return np.empty((0,384),dtype=np.float32)
+        folder=Path('local-data/vector-cache');folder.mkdir(parents=True,exist_ok=True)
         namespace=str(self.model.model._model_dir)+version('fastembed')
         keys=[hashlib.sha256((namespace+'\0'+t).encode()).hexdigest() for t in texts]
-        with sqlite3.connect('local-data/embeddings.sqlite3',timeout=60) as c:
-            c.execute('CREATE TABLE IF NOT EXISTS vectors(key TEXT PRIMARY KEY, data BLOB NOT NULL)')
-            found={}
-            for k in set(keys):
-                row=c.execute('SELECT data FROM vectors WHERE key=?',(k,)).fetchone()
-                if row:found[k]=np.frombuffer(row[0],dtype=np.float32)
-            missing={k:t for k,t in zip(keys,texts) if k not in found}
-            ordered=sorted(missing,key=lambda k:len(missing[k]))
-            for start in range(0,len(ordered),32):
-                group=ordered[start:start+32]
-                vectors=list(self.model.embed([missing[k] for k in group],batch_size=32))
-                for k,v in zip(group,vectors):
-                    found[k]=np.asarray(v,dtype=np.float32)
-                    c.execute('INSERT OR IGNORE INTO vectors(key,data) VALUES(?,?)',(k,found[k].tobytes()))
-                c.commit()
-        return normalize(np.array([found[k] for k in keys]))
+        if not hasattr(self,'_vectors'):self._vectors={};self._loaded=set()
+        # Files are immutable after atomic rename; concurrent workers share no DB writes.
+        for path in folder.glob('*.npz'):
+            if path.name in self._loaded:continue
+            with np.load(path,allow_pickle=False) as a:
+                self._vectors.update(zip(a['keys'].tolist(),a['vectors']))
+            self._loaded.add(path.name)
+        missing={k:t for k,t in zip(keys,texts) if k not in self._vectors}
+        ordered=sorted(missing,key=lambda k:len(missing[k]))
+        for start in range(0,len(ordered),32):
+            group=ordered[start:start+32]
+            vectors=np.asarray(list(self.model.embed([missing[k] for k in group],batch_size=32)),dtype=np.float32)
+            if len(vectors)!=len(group) or not np.isfinite(vectors).all():raise ValueError('Invalid embedding batch')
+            name=hashlib.sha256(''.join(group).encode()).hexdigest()+'.npz'
+            temporary=folder/(name+'.'+uuid.uuid4().hex+'.tmp')
+            with temporary.open('wb') as f:np.savez_compressed(f,keys=np.array(group),vectors=vectors)
+            os.replace(temporary,folder/name)
+            self._vectors.update(zip(group,vectors));self._loaded.add(name)
+        return normalize(np.array([self._vectors[k] for k in keys]))
     def fit(self,texts):return self.encode(texts)
 
 class Engine:

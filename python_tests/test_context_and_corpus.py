@@ -136,3 +136,18 @@ def test_compressed_corpus_preferred_over_truncated_plain_json(tmp_path):
  p=tmp_path/'gold.json';p.write_text('{"broken":')
  save_compressed(p,[{'anchor':'Москва'}])
  assert load_json(p)==[{'anchor':'Москва'}]
+
+def test_immutable_embedding_cache_shares_completed_batches(tmp_path,monkeypatch):
+ import numpy as np
+ from types import SimpleNamespace
+ from interlinker.retrieval import MiniLM
+ monkeypatch.chdir(tmp_path);monkeypatch.setattr('importlib.metadata.version',lambda _: 'test')
+ calls=[]
+ class Fake:
+  model=SimpleNamespace(_model_dir='fixed')
+  def embed(self,texts,batch_size):
+   calls.extend(texts);return [np.array([len(t),1.]) for t in texts]
+ a=MiniLM.__new__(MiniLM);a.model=Fake();b=MiniLM.__new__(MiniLM);b.model=Fake()
+ a.encode(['Москва']);b.encode(['Москва','Казань']);a.encode(['Казань'])
+ assert calls==['Москва','Казань']
+ assert not list((tmp_path/'local-data/vector-cache').glob('*.tmp'))
