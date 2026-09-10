@@ -70,6 +70,9 @@ def run(folder,geographic=False,sentence_context=False):
     X=np.array(features);truth={(g['source'],g['block'],g['target']) for g in gold}
     y=np.array([(r['source'],r['block'],r['target']) in truth for r in records],dtype=int)
     train=np.array([split[r['source']]=='train' for r in records]);dev=~train
+    cache=d/output_name;cache.mkdir(exist_ok=True)
+    np.savez_compressed(cache/'training-features.npz',X=X,y=y,train=train)
+    (cache/'training-records.json').write_text(json.dumps(records,ensure_ascii=False))
     dr=[r for r,t in zip(records,dev) if t];dg=[g for g in gold if split[g['source']]=='dev'];runs=[];predictions={}
     configs=[('baseline_logistic',LogisticRegression(C=.5,max_iter=1000,random_state=17),8),
              ('context_logistic',LogisticRegression(C=.5,max_iter=1000,random_state=17),28),

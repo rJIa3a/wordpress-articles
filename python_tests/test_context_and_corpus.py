@@ -110,3 +110,14 @@ def test_bootstrap_metrics_count_unique_block_targets():
  counts=counts_by_source([r,r],[r],['a','c'])
  np.testing.assert_array_equal(counts,[[1,1,1],[0,0,0]])
  np.testing.assert_array_equal(measures(counts),[[1,1,1],[0,0,0]])
+
+def test_pairwise_training_excludes_dev_and_relative_features_are_group_local():
+ import numpy as np
+ from city_benchmark.ranking import relative_features,pairwise_training
+ r=[dict(source=s,target=t) for s,t in [('a','b'),('a','b'),('c','b'),('c','b')]]
+ X=np.array([[1.],[3.],[100.],[200.]])
+ relative=relative_features(X,r)
+ np.testing.assert_array_equal(relative[:2],[[1,-2,-1],[3,0,1]])
+ pairs,y=pairwise_training(X,np.array([1,0,1,0]),r,np.array([True,True,False,False]))
+ np.testing.assert_array_equal(pairs,[[-2],[2]])
+ assert list(y)==[1,0]
