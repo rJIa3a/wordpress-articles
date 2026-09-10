@@ -121,3 +121,18 @@ def test_pairwise_training_excludes_dev_and_relative_features_are_group_local():
  pairs,y=pairwise_training(X,np.array([1,0,1,0]),r,np.array([True,True,False,False]))
  np.testing.assert_array_equal(pairs,[[-2],[2]])
  assert list(y)==[1,0]
+
+def test_wiki_linktrail_extends_anchor_without_changing_text():
+ from city_benchmark.collect import clean
+ text='Город связан с [[Новосибирск]]ом и [[Томск]]ом регулярным автобусным сообщением, которое работает ежедневно.'
+ a,g=clean(text,'Тест',linktrail=False);b,h=clean(text,'Тест',linktrail=True)
+ assert a==b and [x['anchor'] for x in g]==['Новосибирск','Томск']
+ assert [x['anchor'] for x in h]==['Новосибирском','Томском']
+ _,h=clean(text.replace(']]ом',']]<nowiki />ом'),'Тест',linktrail=True)
+ assert [x['anchor'] for x in h]==['Новосибирск','Томск']
+
+def test_compressed_corpus_preferred_over_truncated_plain_json(tmp_path):
+ from city_benchmark.data import load_json,save_compressed
+ p=tmp_path/'gold.json';p.write_text('{"broken":')
+ save_compressed(p,[{'anchor':'Москва'}])
+ assert load_json(p)==[{'anchor':'Москва'}]

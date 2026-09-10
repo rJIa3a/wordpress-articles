@@ -1,10 +1,11 @@
+from .data import load_json
 """Attribute missing development links to candidate recall, ranking or deduplication."""
 import json,collections
 from pathlib import Path
 from .refine import development_data
 
 def audit(folder='local-data/cities'):
- d=Path(folder);pages=json.loads((d/'corpus.json').read_text());split=json.loads((d/'manifest.json').read_text())['source_split'];gold=json.loads((d/'gold.json').read_text())
+ d=Path(folder);pages=json.loads((d/'corpus.json').read_text());split=json.loads((d/'manifest.json').read_text())['source_split'];gold=load_json(d/'gold.json')
  records,_,gold=development_data(pages,gold,split);by={p['url']:p for p in pages};blocks={(p['url'],b['id']):b for p in pages for b in p['blocks']}
  pred=json.loads((d/'refinement/predictions.json').read_text());pk={(r['source'],r['block'],r['target']) for r in pred};edges={(r['source'],r['target']) for r in pred};ck={(r['source'],r['block'],r['target']) for r in records};counts=collections.Counter();samples=collections.defaultdict(list);seen=set()
  for g in gold:

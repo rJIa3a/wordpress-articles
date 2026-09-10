@@ -1,3 +1,4 @@
+from .data import load_json
 """Competing mention ranking; original links are used on train only for fitting."""
 import argparse,collections,json
 from pathlib import Path
@@ -46,7 +47,7 @@ def run(folder):
     d=Path(folder);cache=d/'refinement-sentences';a=np.load(cache/'training-features.npz');X,y,train=a['X'],a['y'],a['train'];records=json.loads((cache/'training-records.json').read_text())
     split=json.loads((d/'manifest.json').read_text())['source_split']
     if any(split[r['source']] not in ('train','dev') or bool(train[i])!=(split[r['source']]=='train') for i,r in enumerate(records)):raise ValueError('Invalid split')
-    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in json.loads((d/'gold.json').read_text()) if split[g['source']]=='dev'];dev=~train;dr=[r for r,t in zip(records,dev) if t];runs=[];preds=[]
+    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in load_json(d/'gold.json') if split[g['source']]=='dev'];dev=~train;dr=[r for r,t in zip(records,dev) if t];runs=[];preds=[]
     def record(name,threshold,pred):
         result=dict(name=name,threshold=threshold,metrics=metrics(pred,gold,known));runs.append(result);preds.append(pred);print(name,threshold,json.dumps(result['metrics']['block']),flush=True)
     def model(leaves=7,iterations=150):return HistGradientBoostingClassifier(max_iter=iterations,max_leaf_nodes=leaves,min_samples_leaf=60,l2_regularization=20,learning_rate=.06,early_stopping=False,random_state=17)

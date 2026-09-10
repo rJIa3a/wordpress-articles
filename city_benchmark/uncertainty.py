@@ -1,3 +1,4 @@
+from .data import load_json
 """Paired article bootstrap: descriptive uncertainty, not independent validation."""
 import argparse,json
 from pathlib import Path
@@ -17,7 +18,7 @@ def measures(counts):
 
 def run(folder,before_name='refinement-morphology',after_name='refinement-sentences'):
     d=Path(folder);split=json.loads((d/'manifest.json').read_text())['source_split'];sources=sorted(u for u,s in split.items() if s=='dev')
-    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in json.loads((d/'gold.json').read_text()) if g['target'] in known and g['source']!=g['target']]
+    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in load_json(d/'gold.json') if g['target'] in known and g['source']!=g['target']]
     before=json.loads((d/before_name/'predictions.json').read_text());after=json.loads((d/after_name/'predictions.json').read_text())
     if any(split[r['source']]!='dev' for r in before+after):raise ValueError('Dev only')
     a=counts_by_source(before,gold,sources);b=counts_by_source(after,gold,sources)

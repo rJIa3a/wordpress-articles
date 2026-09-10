@@ -50,8 +50,8 @@ def city_titles(out):
  if len(titles)<1000:raise ValueError(f'City-list parser returned only {len(titles)} Russian city rows')
  return list(dict.fromkeys(titles+EXTRA))
 
-def clean(wikitext,title):
- parts=[];links=[];section='';skip=False;blocks=[];gold=[]
+def clean(wikitext,title,linktrail=True):
+ parts=[];links=[];section='';skip=False;blocks=[];gold=[];previous_wikilink=False
  def flush():
   nonlocal parts,links
   text=''.join(parts)
@@ -69,14 +69,20 @@ def clean(wikitext,title):
   start=sum(map(len,parts));parts.append(text)
   if target and title_key(target)!=title_key(title):links.append(dict(target_title=title_key(target),anchor=text,start=start,end=start+len(text)))
  def nodes(code):
+  nonlocal previous_wikilink
   for node in code.nodes:
+   trailing=previous_wikilink;previous_wikilink=False
    name=type(node).__name__
-   if name=='Text':add(re.sub(r"'{2,5}",'',str(node)))
+   if name=='Text':
+    text=re.sub(r"'{2,5}",'',str(node));add(text)
+    if linktrail and trailing and links:
+     suffix=re.match(r'[a-zа-яё]+',str(node))
+     if suffix:links[-1]['anchor']+=suffix.group();links[-1]['end']+=len(suffix.group())
    elif name=='Wikilink':
     target=title_key(node.title)
     if ':' in target:continue
     anchor=(node.text or node.title).strip_code(normalize=True,collapse=True)
-    add(anchor,target)
+    before=len(links);add(anchor,target);previous_wikilink=len(links)>before
    elif name=='ExternalLink':
     if node.title:add(node.title.strip_code())
    elif name=='HTMLEntity':add(node.normalize())
@@ -133,8 +139,10 @@ def collect(out,count=1150):
  for a in gold:a['target']=url(aliases.get(a['target_title'],a['target_title']))
  gold=[a for a in gold if a['source'] in selected_urls]
  ordered=sorted(selected,key=lambda t:hashlib.sha256(t.encode()).hexdigest());split={pages[t]['url']:('train' if i<int(len(ordered)*.7) else 'dev' if i<int(len(ordered)*.85) else 'test') for i,t in enumerate(ordered)}
- manifest=dict(requested=count,collected=len(selected),complete=len(selected)==count,source_split=split,versions=[v for v in versions if v['url'] in selected_urls],failures=failures,selection='Russian Wikipedia city-list entries supplemented by nearby-country cities; no gold-based target expansion',license='CC BY-SA 4.0; article histories provide author attribution; transformations remove templates and references, retaining supported prose and wikilink offsets',created=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()))
- for name,value in [('corpus',[pages[t] for t in selected]),('gold',gold),('manifest',manifest)]: (out/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False))
+ manifest=dict(parser_version=2,requested=count,collected=len(selected),complete=len(selected)==count,source_split=split,versions=[v for v in versions if v['url'] in selected_urls],failures=failures,selection='Russian Wikipedia city-list entries supplemented by nearby-country cities; no gold-based target expansion',license='CC BY-SA 4.0; article histories provide author attribution; transformations remove templates and references, retaining supported prose and wikilink offsets',created=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()))
+ for name,value in [('corpus',[pages[t] for t in selected]),('manifest',manifest)]: (out/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False))
+ from .data import save_compressed
+ save_compressed(out/'gold.json',gold)
  print('DONE',len(selected),'pages',len(gold),'gold links',flush=True)
  if len(selected)!=count:raise RuntimeError(f'Incomplete corpus: {len(selected)}/{count}. Rerun resumes cache.')
 if __name__=='__main__':

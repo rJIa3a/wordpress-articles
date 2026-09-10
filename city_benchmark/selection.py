@@ -1,3 +1,4 @@
+from .data import load_json
 """Compare bounded cross-section repetition on development predictions only."""
 import collections,json,argparse
 from pathlib import Path
@@ -19,7 +20,7 @@ def run(folder,experiment='refinement'):
     if experiment not in ('refinement','refinement-morphology'):raise ValueError('Unknown experiment')
     d=Path(folder);records=json.loads((d/experiment/'scored-dev.json').read_text());split=json.loads((d/'manifest.json').read_text())['source_split']
     if any(split[r['source']]!='dev' for r in records):raise ValueError('Only dev sources may be evaluated')
-    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in json.loads((d/'gold.json').read_text()) if split[g['source']]=='dev'];runs=[];predictions=[]
+    known={p['url'] for p in json.loads((d/'corpus.json').read_text())};gold=[g for g in load_json(d/'gold.json') if split[g['source']]=='dev'];runs=[];predictions=[]
     for max_per_target,repeat_threshold in [(1,.5),(2,.5),(2,.65),(2,.8),(3,.65)]:
         pred=select_sections(records,repeat_threshold=repeat_threshold,max_per_target=max_per_target)
         result=dict(max_per_target=max_per_target,threshold=.5,repeat_threshold=repeat_threshold,metrics=metrics(pred,gold,known));runs.append(result);predictions.append(pred);print(json.dumps(result),flush=True)

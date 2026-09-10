@@ -1,3 +1,4 @@
+from .data import load_json
 """Train on hidden-link reconstruction; dev chooses threshold; test is never tuned."""
 import argparse,collections,hashlib,json,re,html
 from pathlib import Path
@@ -67,7 +68,7 @@ def select(records,scores,threshold):
  return selected
 
 def run(folder,provider='minilm'):
- d=Path(folder);pages=json.loads((d/'corpus.json').read_text());gold=json.loads((d/'gold.json').read_text());manifest=json.loads((d/'manifest.json').read_text())
+ d=Path(folder);pages=json.loads((d/'corpus.json').read_text());gold=load_json(d/'gold.json');manifest=json.loads((d/'manifest.json').read_text())
  if not manifest['complete']:raise ValueError('Corpus incomplete; refusing misleading benchmark')
  split=manifest['source_split'];by={p['url']:p for p in pages};known=set(by)
  records,texts=candidates(pages,gold,split);print('Candidate mentions:',len(records),'block contexts:',len({r['blockkey'] for r in records}),flush=True)

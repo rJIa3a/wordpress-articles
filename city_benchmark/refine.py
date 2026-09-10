@@ -1,3 +1,4 @@
+from .data import load_json
 """Development-only experiments. Never evaluates or emits test predictions."""
 import argparse, collections, hashlib, json, re
 from pathlib import Path
@@ -40,7 +41,7 @@ def development_data(pages,gold,split,geographic=False):
 def run(folder,geographic=False,sentence_context=False):
     d=Path(folder);pages=json.loads((d/'corpus.json').read_text());manifest=json.loads((d/'manifest.json').read_text())
     if not manifest['complete']:raise ValueError('Corpus incomplete')
-    split=manifest['source_split'];gold=json.loads((d/'gold.json').read_text())
+    split=manifest['source_split'];gold=load_json(d/'gold.json')
     records,texts,gold=development_data(pages,gold,split,geographic)
     output_name='refinement-sentences' if sentence_context else 'refinement-morphology' if geographic else 'refinement'
     print('Train/dev candidates:',len(records),flush=True)
