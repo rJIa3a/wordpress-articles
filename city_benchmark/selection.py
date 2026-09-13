@@ -1,19 +1,29 @@
 from .data import load_json
 """Compare bounded cross-section repetition on development predictions only."""
-import collections,json,argparse
+import collections,json,argparse,math
 from pathlib import Path
 from .experiment import metrics
 
-def select_sections(records,threshold=.5,repeat_threshold=.65,max_per_target=2,min_block_gap=3):
+def select_sections(records,threshold=.5,repeat_threshold=.65,max_per_target=2,min_block_gap=3,decisions=None):
+    if not 0 <= threshold <= 1 or not 0 <= repeat_threshold <= 1 or max_per_target < 1 or min_block_gap < 0:
+        raise ValueError('Invalid selection policy')
+    if any(not math.isfinite(r['score']) or not 0 <= r['score'] <= 1 for r in records):
+        raise ValueError('Scores must be finite probabilities, not percentages')
+    def reject(r,reason):
+        if decisions is not None:decisions.append(dict(source=r['source'],target=r['target'],block=r['block'],start=r['start'],score=r['score'],reason=reason))
     chosen=[];pairs=collections.defaultdict(list);spans=collections.defaultdict(list)
     for r in sorted(records,key=lambda r:(-r['score'],r['source'],int(r['block']),r['start'])):
-        if r['score']<threshold:continue
+        if r['score']<threshold:reject(r,'below_threshold');continue
         pair=(r['source'],r['target']);block=(r['source'],r['block']);prior=pairs[pair]
-        if r['source']==r['target'] or len(prior)>=max_per_target:continue
-        if prior and (r['score']<repeat_threshold or not r['section'] or any(r['section']==p['section'] or abs(int(r['block'])-int(p['block']))<min_block_gap for p in prior)):continue
-        if any(r['start']<e and r['end']>s for s,e in spans[block]):continue
+        if r['source']==r['target']:reject(r,'self_link');continue
+        if len(prior)>=max_per_target:reject(r,'target_limit');continue
+        if prior and r['score']<repeat_threshold:reject(r,'repeat_confidence');continue
+        if prior and (not r['section'] or any(r['section']==p['section'] for p in prior)):reject(r,'same_or_missing_section');continue
+        if prior and any(abs(int(r['block'])-int(p['block']))<min_block_gap for p in prior):reject(r,'repeat_distance');continue
+        if any(r['start']<e and r['end']>s for s,e in spans[block]):reject(r,'anchor_overlap');continue
         pairs[pair].append(r);spans[block].append((r['start'],r['end']))
         chosen.append({k:v for k,v in r.items() if k!='features'}|{'score':round(r['score']*100,2)})
+        reject(r,'selected')
     return chosen
 
 def run(folder,experiment='refinement'):
