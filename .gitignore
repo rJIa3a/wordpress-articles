@@ -1,2 +1,11 @@
 /vendor/
 .phpunit.result.cache
+
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+local-data/
+*.sqlite*

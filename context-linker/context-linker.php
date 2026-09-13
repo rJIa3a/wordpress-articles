@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Context Linker
  * Description: Рекомендует внутренние ссылки на основе JSON.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: Example
  */
 
@@ -41,7 +41,7 @@ class Context_Linker {
             return;
         }
         $links = $this->load_data();
-        echo '<div class="wrap"><h1>Context Linker</h1>';
+        echo '<div class="wrap"><h1>Context Linker</h1><p>Read-only: проверяйте предложения в локальном Universal Interlinker. Публикация отключена до реализации changeset и rollback.</p>';
         echo '<table class="widefat fixed" cellspacing="0">';
         echo '<thead><tr><th>Откуда ссылка</th><th>Анкор</th><th>Куда ссылка</th><th>Действие</th></tr></thead><tbody>';
         foreach ( $links as $index => $link ) {
@@ -50,40 +50,18 @@ class Context_Linker {
             echo '<td>' . esc_html( $link['source_url'] ) . '</td>';
             echo '<td>' . esc_html( $link['anchor'] ) . '</td>';
             echo '<td>' . esc_html( $link['target_url'] ) . '</td>';
-            echo '<td><a class="button" href="' . esc_url( $apply_url ) . '">Принять</a></td>';
+            echo '<td>Только просмотр</td>';
             echo '</tr>';
         }
         echo '</tbody></table></div>';
     }
 
     public function handle_apply() {
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( 'Недостаточно прав.' );
-        }
-        $index = isset( $_GET['index'] ) ? intval( $_GET['index'] ) : -1;
-        $links = $this->load_data();
-        if ( isset( $links[ $index ] ) ) {
-            $this->apply_link( $links[ $index ] );
-        }
-        wp_redirect( admin_url( 'admin.php?page=context-linker' ) );
-        exit;
+        wp_die( 'Read-only: запись в WordPress отключена.', 'Context Linker', array( 'response' => 403 ) );
     }
 
     public function apply_link( $link ) {
-        $source_post = $this->get_post_by_url( $link['source_url'] );
-        if ( ! $source_post ) {
-            return false;
-        }
-        $content = $source_post->post_content;
-        $updated = $this->insert_link( $content, $link['anchor'], $link['target_url'] );
-        if ( $updated !== $content ) {
-            wp_update_post( array(
-                'ID' => $source_post->ID,
-                'post_content' => $updated,
-            ) );
-            return true;
-        }
-        return false;
+        return false; // No live writes before reviewed changesets and rollback exist.
     }
 
     public function get_post_by_url( $url ) {

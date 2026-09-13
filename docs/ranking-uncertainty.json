@@ -1,0 +1,31 @@
+{
+  "before": "refinement-sentences",
+  "after": "refinement-ranking",
+  "split": "dev_only",
+  "resamples": 2000,
+  "unit": "source_article",
+  "caveat": "Descriptive only: models selected on this dev set; articles may be topically dependent. Not a new holdout.",
+  "delta": {
+    "precision": {
+      "point": 0.014987015493674538,
+      "interval95": [
+        -0.0014478112475604793,
+        0.03327758098428618
+      ]
+    },
+    "recall": {
+      "point": 0.02247956403269752,
+      "interval95": [
+        0.007665301931225217,
+        0.03828417948177796
+      ]
+    },
+    "f05": {
+      "point": 0.018438325279039103,
+      "interval95": [
+        0.0031201769438828383,
+        0.03535566188517122
+      ]
+    }
+  }
+}

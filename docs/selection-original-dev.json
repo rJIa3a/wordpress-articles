@@ -1,0 +1,210 @@
+{
+  "split": "dev_only",
+  "test_evaluated": false,
+  "runs": [
+    {
+      "max_per_target": 1,
+      "threshold": 0.5,
+      "repeat_threshold": 0.5,
+      "metrics": {
+        "suggestions": 897,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 692,
+          "predicted": 897,
+          "gold": 1107,
+          "precision": 0.7714604236343366,
+          "recall": 0.6251129177958447,
+          "f05": 0.7369542066027689
+        },
+        "block": {
+          "hits": 633,
+          "predicted": 897,
+          "gold": 1468,
+          "precision": 0.705685618729097,
+          "recall": 0.4311989100817439,
+          "f05": 0.6259889240506329
+        },
+        "span": {
+          "hits": 504,
+          "predicted": 897,
+          "gold": 1515,
+          "precision": 0.5618729096989966,
+          "recall": 0.3326732673267327,
+          "f05": 0.4938271604938272
+        }
+      }
+    },
+    {
+      "max_per_target": 2,
+      "threshold": 0.5,
+      "repeat_threshold": 0.5,
+      "metrics": {
+        "suggestions": 1056,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 692,
+          "predicted": 897,
+          "gold": 1107,
+          "precision": 0.7714604236343366,
+          "recall": 0.6251129177958447,
+          "f05": 0.7369542066027689
+        },
+        "block": {
+          "hits": 707,
+          "predicted": 1056,
+          "gold": 1468,
+          "precision": 0.6695075757575758,
+          "recall": 0.4816076294277929,
+          "f05": 0.621047083626142
+        },
+        "span": {
+          "hits": 564,
+          "predicted": 1056,
+          "gold": 1515,
+          "precision": 0.5340909090909091,
+          "recall": 0.3722772277227723,
+          "f05": 0.4913748039728175
+        }
+      }
+    },
+    {
+      "max_per_target": 2,
+      "threshold": 0.5,
+      "repeat_threshold": 0.65,
+      "metrics": {
+        "suggestions": 950,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 692,
+          "predicted": 897,
+          "gold": 1107,
+          "precision": 0.7714604236343366,
+          "recall": 0.6251129177958447,
+          "f05": 0.7369542066027689
+        },
+        "block": {
+          "hits": 661,
+          "predicted": 950,
+          "gold": 1468,
+          "precision": 0.6957894736842105,
+          "recall": 0.4502724795640327,
+          "f05": 0.6273728170083522
+        },
+        "span": {
+          "hits": 528,
+          "predicted": 950,
+          "gold": 1515,
+          "precision": 0.5557894736842105,
+          "recall": 0.3485148514851485,
+          "f05": 0.4967074317968015
+        }
+      }
+    },
+    {
+      "max_per_target": 2,
+      "threshold": 0.5,
+      "repeat_threshold": 0.8,
+      "metrics": {
+        "suggestions": 899,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 692,
+          "predicted": 897,
+          "gold": 1107,
+          "precision": 0.7714604236343366,
+          "recall": 0.6251129177958447,
+          "f05": 0.7369542066027689
+        },
+        "block": {
+          "hits": 635,
+          "predicted": 899,
+          "gold": 1468,
+          "precision": 0.7063403781979978,
+          "recall": 0.43256130790190733,
+          "f05": 0.6269747235387045
+        },
+        "span": {
+          "hits": 506,
+          "predicted": 899,
+          "gold": 1515,
+          "precision": 0.5628476084538376,
+          "recall": 0.333993399339934,
+          "f05": 0.49501076110350223
+        }
+      }
+    },
+    {
+      "max_per_target": 3,
+      "threshold": 0.5,
+      "repeat_threshold": 0.65,
+      "metrics": {
+        "suggestions": 950,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 692,
+          "predicted": 897,
+          "gold": 1107,
+          "precision": 0.7714604236343366,
+          "recall": 0.6251129177958447,
+          "f05": 0.7369542066027689
+        },
+        "block": {
+          "hits": 661,
+          "predicted": 950,
+          "gold": 1468,
+          "precision": 0.6957894736842105,
+          "recall": 0.4502724795640327,
+          "f05": 0.6273728170083522
+        },
+        "span": {
+          "hits": 528,
+          "predicted": 950,
+          "gold": 1515,
+          "precision": 0.5557894736842105,
+          "recall": 0.3485148514851485,
+          "f05": 0.4967074317968015
+        }
+      }
+    }
+  ],
+  "selected": {
+    "max_per_target": 2,
+    "threshold": 0.5,
+    "repeat_threshold": 0.65,
+    "metrics": {
+      "suggestions": 950,
+      "all_wikipedia_links": 26159,
+      "city_links": 1515,
+      "edge": {
+        "hits": 692,
+        "predicted": 897,
+        "gold": 1107,
+        "precision": 0.7714604236343366,
+        "recall": 0.6251129177958447,
+        "f05": 0.7369542066027689
+      },
+      "block": {
+        "hits": 661,
+        "predicted": 950,
+        "gold": 1468,
+        "precision": 0.6957894736842105,
+        "recall": 0.4502724795640327,
+        "f05": 0.6273728170083522
+      },
+      "span": {
+        "hits": 528,
+        "predicted": 950,
+        "gold": 1515,
+        "precision": 0.5557894736842105,
+        "recall": 0.3485148514851485,
+        "f05": 0.4967074317968015
+      }
+    }
+  }
+}
