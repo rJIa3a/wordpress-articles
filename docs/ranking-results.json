@@ -1,0 +1,536 @@
+{
+  "split": "dev_only",
+  "test_evaluated": false,
+  "train_pair_comparisons": 22720,
+  "runs": [
+    {
+      "name": "baseline",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1256,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 878,
+          "predicted": 1256,
+          "gold": 1107,
+          "precision": 0.6990445859872612,
+          "recall": 0.7931345980126467,
+          "f05": 0.7160332735279726
+        },
+        "block": {
+          "hits": 810,
+          "predicted": 1256,
+          "gold": 1468,
+          "precision": 0.6449044585987261,
+          "recall": 0.5517711171662125,
+          "f05": 0.6238447319778189
+        },
+        "span": {
+          "hits": 606,
+          "predicted": 1256,
+          "gold": 1515,
+          "precision": 0.482484076433121,
+          "recall": 0.4,
+          "f05": 0.463373604526686
+        }
+      }
+    },
+    {
+      "name": "baseline",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 942,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 727,
+          "predicted": 942,
+          "gold": 1107,
+          "precision": 0.7717622080679406,
+          "recall": 0.6567299006323396,
+          "f05": 0.7456410256410256
+        },
+        "block": {
+          "hits": 670,
+          "predicted": 942,
+          "gold": 1468,
+          "precision": 0.7112526539278131,
+          "recall": 0.4564032697547684,
+          "f05": 0.6398013750954927
+        },
+        "span": {
+          "hits": 516,
+          "predicted": 942,
+          "gold": 1515,
+          "precision": 0.5477707006369427,
+          "recall": 0.3405940594059406,
+          "f05": 0.4883588869960249
+        }
+      }
+    },
+    {
+      "name": "baseline",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 594,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 500,
+          "predicted": 594,
+          "gold": 1107,
+          "precision": 0.8417508417508418,
+          "recall": 0.45167118337850043,
+          "f05": 0.717772035601493
+        },
+        "block": {
+          "hits": 467,
+          "predicted": 594,
+          "gold": 1468,
+          "precision": 0.7861952861952862,
+          "recall": 0.3181198910081744,
+          "f05": 0.6074401664932363
+        },
+        "span": {
+          "hits": 354,
+          "predicted": 594,
+          "gold": 1515,
+          "precision": 0.5959595959595959,
+          "recall": 0.23366336633663368,
+          "f05": 0.45489591364687737
+        }
+      }
+    },
+    {
+      "name": "pairwise_0.25",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 942,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 727,
+          "predicted": 942,
+          "gold": 1107,
+          "precision": 0.7717622080679406,
+          "recall": 0.6567299006323396,
+          "f05": 0.7456410256410256
+        },
+        "block": {
+          "hits": 667,
+          "predicted": 942,
+          "gold": 1468,
+          "precision": 0.7080679405520169,
+          "recall": 0.4543596730245232,
+          "f05": 0.6369365928189457
+        },
+        "span": {
+          "hits": 513,
+          "predicted": 942,
+          "gold": 1515,
+          "precision": 0.5445859872611465,
+          "recall": 0.33861386138613864,
+          "f05": 0.4855195911413969
+        }
+      }
+    },
+    {
+      "name": "pairwise_0.5",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 942,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 727,
+          "predicted": 942,
+          "gold": 1107,
+          "precision": 0.7717622080679406,
+          "recall": 0.6567299006323396,
+          "f05": 0.7456410256410256
+        },
+        "block": {
+          "hits": 667,
+          "predicted": 942,
+          "gold": 1468,
+          "precision": 0.7080679405520169,
+          "recall": 0.4543596730245232,
+          "f05": 0.6369365928189457
+        },
+        "span": {
+          "hits": 513,
+          "predicted": 942,
+          "gold": 1515,
+          "precision": 0.5445859872611465,
+          "recall": 0.33861386138613864,
+          "f05": 0.4855195911413969
+        }
+      }
+    },
+    {
+      "name": "pairwise_1",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 942,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 727,
+          "predicted": 942,
+          "gold": 1107,
+          "precision": 0.7717622080679406,
+          "recall": 0.6567299006323396,
+          "f05": 0.7456410256410256
+        },
+        "block": {
+          "hits": 662,
+          "predicted": 942,
+          "gold": 1468,
+          "precision": 0.70276008492569,
+          "recall": 0.45095367847411444,
+          "f05": 0.6321619556913675
+        },
+        "span": {
+          "hits": 507,
+          "predicted": 942,
+          "gold": 1515,
+          "precision": 0.5382165605095541,
+          "recall": 0.3346534653465347,
+          "f05": 0.4798409994321408
+        }
+      }
+    },
+    {
+      "name": "baseline_large",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1235,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 879,
+          "predicted": 1235,
+          "gold": 1107,
+          "precision": 0.7117408906882591,
+          "recall": 0.7940379403794038,
+          "f05": 0.7268066809988424
+        },
+        "block": {
+          "hits": 807,
+          "predicted": 1235,
+          "gold": 1468,
+          "precision": 0.6534412955465587,
+          "recall": 0.5497275204359673,
+          "f05": 0.629681647940075
+        },
+        "span": {
+          "hits": 605,
+          "predicted": 1235,
+          "gold": 1515,
+          "precision": 0.4898785425101215,
+          "recall": 0.39933993399339934,
+          "f05": 0.46862896979085983
+        }
+      }
+    },
+    {
+      "name": "baseline_large",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 977,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 755,
+          "predicted": 977,
+          "gold": 1107,
+          "precision": 0.7727737973387923,
+          "recall": 0.6820234869015357,
+          "f05": 0.7527417746759721
+        },
+        "block": {
+          "hits": 692,
+          "predicted": 977,
+          "gold": 1468,
+          "precision": 0.7082906857727738,
+          "recall": 0.4713896457765668,
+          "f05": 0.6436011904761904
+        },
+        "span": {
+          "hits": 532,
+          "predicted": 977,
+          "gold": 1515,
+          "precision": 0.5445240532241555,
+          "recall": 0.35115511551155115,
+          "f05": 0.49050341139590636
+        }
+      }
+    },
+    {
+      "name": "baseline_large",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 670,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 562,
+          "predicted": 670,
+          "gold": 1107,
+          "precision": 0.8388059701492537,
+          "recall": 0.5076784101174345,
+          "f05": 0.7420121468180619
+        },
+        "block": {
+          "hits": 524,
+          "predicted": 670,
+          "gold": 1468,
+          "precision": 0.7820895522388059,
+          "recall": 0.3569482288828338,
+          "f05": 0.6316297010607521
+        },
+        "span": {
+          "hits": 402,
+          "predicted": 670,
+          "gold": 1515,
+          "precision": 0.6,
+          "recall": 0.26534653465346536,
+          "f05": 0.47914183551847433
+        }
+      }
+    },
+    {
+      "name": "relative_7",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1259,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 881,
+          "predicted": 1259,
+          "gold": 1107,
+          "precision": 0.6997617156473391,
+          "recall": 0.7958446251129178,
+          "f05": 0.7170763470616962
+        },
+        "block": {
+          "hits": 819,
+          "predicted": 1259,
+          "gold": 1468,
+          "precision": 0.6505162827640985,
+          "recall": 0.5579019073569482,
+          "f05": 0.6296125461254612
+        },
+        "span": {
+          "hits": 608,
+          "predicted": 1259,
+          "gold": 1515,
+          "precision": 0.482922954725973,
+          "recall": 0.4013201320132013,
+          "f05": 0.46405128987940775
+        }
+      }
+    },
+    {
+      "name": "relative_7",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 939,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 722,
+          "predicted": 939,
+          "gold": 1107,
+          "precision": 0.7689030883919062,
+          "recall": 0.6522131887985546,
+          "f05": 0.7423401192679416
+        },
+        "block": {
+          "hits": 671,
+          "predicted": 939,
+          "gold": 1468,
+          "precision": 0.7145899893503728,
+          "recall": 0.45708446866485014,
+          "f05": 0.642228177641654
+        },
+        "span": {
+          "hits": 513,
+          "predicted": 939,
+          "gold": 1515,
+          "precision": 0.5463258785942492,
+          "recall": 0.33861386138613864,
+          "f05": 0.48662492885600456
+        }
+      }
+    },
+    {
+      "name": "relative_7",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 592,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 496,
+          "predicted": 592,
+          "gold": 1107,
+          "precision": 0.8378378378378378,
+          "recall": 0.4480578139114724,
+          "f05": 0.7136690647482015
+        },
+        "block": {
+          "hits": 465,
+          "predicted": 592,
+          "gold": 1468,
+          "precision": 0.785472972972973,
+          "recall": 0.3167574931880109,
+          "f05": 0.6061001042752867
+        },
+        "span": {
+          "hits": 347,
+          "predicted": 592,
+          "gold": 1515,
+          "precision": 0.5861486486486487,
+          "recall": 0.22904290429042903,
+          "f05": 0.446819469482359
+        }
+      }
+    },
+    {
+      "name": "relative_15",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1234,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 882,
+          "predicted": 1234,
+          "gold": 1107,
+          "precision": 0.7147487844408428,
+          "recall": 0.7967479674796748,
+          "f05": 0.7297699817971206
+        },
+        "block": {
+          "hits": 816,
+          "predicted": 1234,
+          "gold": 1468,
+          "precision": 0.6612641815235009,
+          "recall": 0.555858310626703,
+          "f05": 0.6371018113678951
+        },
+        "span": {
+          "hits": 608,
+          "predicted": 1234,
+          "gold": 1515,
+          "precision": 0.49270664505672607,
+          "recall": 0.4013201320132013,
+          "f05": 0.47124476825298406
+        }
+      }
+    },
+    {
+      "name": "relative_15",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 968,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 755,
+          "predicted": 968,
+          "gold": 1107,
+          "precision": 0.7799586776859504,
+          "recall": 0.6820234869015357,
+          "f05": 0.758184374372364
+        },
+        "block": {
+          "hits": 703,
+          "predicted": 968,
+          "gold": 1468,
+          "precision": 0.7262396694214877,
+          "recall": 0.47888283378746593,
+          "f05": 0.6582397003745318
+        },
+        "span": {
+          "hits": 531,
+          "predicted": 968,
+          "gold": 1515,
+          "precision": 0.5485537190082644,
+          "recall": 0.3504950495049505,
+          "f05": 0.4928531650269166
+        }
+      }
+    },
+    {
+      "name": "relative_15",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 669,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 559,
+          "predicted": 669,
+          "gold": 1107,
+          "precision": 0.8355754857997011,
+          "recall": 0.5049683830171635,
+          "f05": 0.7388316151202751
+        },
+        "block": {
+          "hits": 522,
+          "predicted": 669,
+          "gold": 1468,
+          "precision": 0.7802690582959642,
+          "recall": 0.3555858310626703,
+          "f05": 0.6298262548262549
+        },
+        "span": {
+          "hits": 394,
+          "predicted": 669,
+          "gold": 1515,
+          "precision": 0.5889387144992526,
+          "recall": 0.2600660066006601,
+          "f05": 0.47005487950369834
+        }
+      }
+    }
+  ],
+  "selected": {
+    "name": "relative_15",
+    "threshold": 0.5,
+    "metrics": {
+      "suggestions": 968,
+      "all_wikipedia_links": 26159,
+      "city_links": 1515,
+      "edge": {
+        "hits": 755,
+        "predicted": 968,
+        "gold": 1107,
+        "precision": 0.7799586776859504,
+        "recall": 0.6820234869015357,
+        "f05": 0.758184374372364
+      },
+      "block": {
+        "hits": 703,
+        "predicted": 968,
+        "gold": 1468,
+        "precision": 0.7262396694214877,
+        "recall": 0.47888283378746593,
+        "f05": 0.6582397003745318
+      },
+      "span": {
+        "hits": 531,
+        "predicted": 968,
+        "gold": 1515,
+        "precision": 0.5485537190082644,
+        "recall": 0.3504950495049505,
+        "f05": 0.4928531650269166
+      }
+    }
+  },
+  "method": "Pairwise train-only preference and within-source-target relative features. Dev chooses F0.5; no independent validation."
+}

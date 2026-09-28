@@ -1,0 +1,443 @@
+{
+  "provider": "lsa",
+  "accepted": 0,
+  "rejections": {
+    "destination_intent_mismatch": 385,
+    "weak_or_missing_anchor": 26356,
+    "low_score": 52,
+    "noncity_named_entity": 3,
+    "low_semantic": 2,
+    "existing_target": 2
+  },
+  "pages": [
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnostej-novokuznecka/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 532,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-astrakhani/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 10,
+        "weak_or_missing_anchor": 890
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-belgoroda/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 2,
+        "weak_or_missing_anchor": 697,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-chelyabinska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 3,
+        "weak_or_missing_anchor": 397
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-izhevska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 6,
+        "weak_or_missing_anchor": 573,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-kazani/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 536,
+        "low_score": 4
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-khabarovska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "low_score": 3,
+        "weak_or_missing_anchor": 666,
+        "destination_intent_mismatch": 11
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-krasnodara/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 273
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-krasnoyarska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 9,
+        "weak_or_missing_anchor": 531
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-nizhnego-novgoroda/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 693
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-nizhnevartovska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 3,
+        "weak_or_missing_anchor": 657
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-novosibirska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 520
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-omska/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 6,
+        "weak_or_missing_anchor": 234
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-penzy/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 14,
+        "weak_or_missing_anchor": 764,
+        "low_score": 1,
+        "noncity_named_entity": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-permi/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 573
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-rostova-na-donu/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 612,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-ryazani/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 6,
+        "weak_or_missing_anchor": 613,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-samary/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 298,
+        "low_score": 1,
+        "destination_intent_mismatch": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-saratova/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 592,
+        "destination_intent_mismatch": 7,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-sochi/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 10,
+        "weak_or_missing_anchor": 430
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-tyumeni/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 4,
+        "weak_or_missing_anchor": 716
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-ufy/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 772,
+        "noncity_named_entity": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-volgograda/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 5,
+        "weak_or_missing_anchor": 355
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-voronezha/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 9,
+        "weak_or_missing_anchor": 610,
+        "noncity_named_entity": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/dostoprimechatelnosti-yaroslavlya/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 6,
+        "weak_or_missing_anchor": 594
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-astrahan/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 11,
+        "weak_or_missing_anchor": 487,
+        "low_score": 2
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-belgorod/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 8,
+        "weak_or_missing_anchor": 450,
+        "low_score": 2
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-chelyabinsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 578,
+        "low_score": 1,
+        "destination_intent_mismatch": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-habarovsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 6,
+        "weak_or_missing_anchor": 252,
+        "low_score": 2
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-izhevsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 9,
+        "weak_or_missing_anchor": 307,
+        "low_score": 4
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-kazan/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "low_score": 3,
+        "destination_intent_mismatch": 11,
+        "weak_or_missing_anchor": 466
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-krasnodar/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 3,
+        "weak_or_missing_anchor": 776,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-krasnoyarsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 12,
+        "low_score": 1,
+        "weak_or_missing_anchor": 307
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-nizhnevartovsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 294,
+        "low_semantic": 2,
+        "low_score": 4
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-nizhnij-novgorod/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 648,
+        "destination_intent_mismatch": 11,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-novokuznetsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 15,
+        "weak_or_missing_anchor": 585
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-novosibirsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 470,
+        "destination_intent_mismatch": 10
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-omsk/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 253,
+        "destination_intent_mismatch": 7
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-penzu/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 715,
+        "destination_intent_mismatch": 21,
+        "low_score": 4
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-perm/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "low_score": 4,
+        "weak_or_missing_anchor": 425,
+        "destination_intent_mismatch": 11
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-rostov-na-donu/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 7,
+        "weak_or_missing_anchor": 591,
+        "low_score": 2
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-ryazan/",
+      "retrieval_accepted": 1,
+      "rejections": {
+        "weak_or_missing_anchor": 686,
+        "destination_intent_mismatch": 12,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-samaru/",
+      "retrieval_accepted": 1,
+      "rejections": {
+        "destination_intent_mismatch": 15,
+        "weak_or_missing_anchor": 564
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-saratov/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 611,
+        "destination_intent_mismatch": 9
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-sochi/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 8,
+        "weak_or_missing_anchor": 290,
+        "low_score": 2
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-tumen/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 617,
+        "destination_intent_mismatch": 3
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-ufu/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 587,
+        "destination_intent_mismatch": 12,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-volgograd/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 527,
+        "destination_intent_mismatch": 12,
+        "low_score": 1
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-voronezh/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "destination_intent_mismatch": 12,
+        "weak_or_missing_anchor": 568
+      }
+    },
+    {
+      "source": "https://dagorod.ru/pereezd-v-yaroslavl/",
+      "retrieval_accepted": 0,
+      "rejections": {
+        "weak_or_missing_anchor": 174,
+        "destination_intent_mismatch": 5,
+        "low_score": 1
+      }
+    }
+  ]
+}

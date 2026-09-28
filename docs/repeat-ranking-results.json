@@ -1,0 +1,326 @@
+{
+  "split": "dev_only",
+  "test_evaluated": false,
+  "precision_floor": 0.7289915966386554,
+  "sklearn_version": "1.8.0",
+  "numpy_version": "2.3.5",
+  "historical_control": {
+    "hits": 703,
+    "predicted": 968,
+    "gold": 1468,
+    "precision": 0.7262396694214877,
+    "recall": 0.47888283378746593,
+    "f05": 0.6582397003745318
+  },
+  "historical_control_reproduced": false,
+  "span_precision_floor": 0.7100840336134454,
+  "selection": "Maximum block recall without lower block or exact-anchor precision than control",
+  "runs": [
+    {
+      "model": "page_relative",
+      "max_per_target": 1,
+      "repeat_threshold": 0.5,
+      "metrics": {
+        "suggestions": 952,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 952,
+          "gold": 1107,
+          "precision": 0.7836134453781513,
+          "recall": 0.6738934056007226,
+          "f05": 0.7589013224821974
+        },
+        "block": {
+          "hits": 694,
+          "predicted": 952,
+          "gold": 1468,
+          "precision": 0.7289915966386554,
+          "recall": 0.47275204359673023,
+          "f05": 0.6576952236542836
+        },
+        "span": {
+          "hits": 676,
+          "predicted": 952,
+          "gold": 1515,
+          "precision": 0.7100840336134454,
+          "recall": 0.44620462046204623,
+          "f05": 0.6349802742814203
+        }
+      }
+    },
+    {
+      "model": "page_relative",
+      "max_per_target": 2,
+      "repeat_threshold": 0.65,
+      "metrics": {
+        "suggestions": 1026,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 952,
+          "gold": 1107,
+          "precision": 0.7836134453781513,
+          "recall": 0.6738934056007226,
+          "f05": 0.7589013224821974
+        },
+        "block": {
+          "hits": 733,
+          "predicted": 1026,
+          "gold": 1468,
+          "precision": 0.7144249512670565,
+          "recall": 0.4993188010899183,
+          "f05": 0.6577530509691313
+        },
+        "span": {
+          "hits": 712,
+          "predicted": 1026,
+          "gold": 1515,
+          "precision": 0.6939571150097466,
+          "recall": 0.46996699669966996,
+          "f05": 0.6335646912261969
+        }
+      }
+    },
+    {
+      "model": "page_relative",
+      "max_per_target": 2,
+      "repeat_threshold": 0.8,
+      "metrics": {
+        "suggestions": 961,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 952,
+          "gold": 1107,
+          "precision": 0.7836134453781513,
+          "recall": 0.6738934056007226,
+          "f05": 0.7589013224821974
+        },
+        "block": {
+          "hits": 698,
+          "predicted": 961,
+          "gold": 1468,
+          "precision": 0.7263267429760666,
+          "recall": 0.47547683923705725,
+          "f05": 0.6570030120481928
+        },
+        "span": {
+          "hits": 680,
+          "predicted": 961,
+          "gold": 1515,
+          "precision": 0.7075962539021852,
+          "recall": 0.44884488448844884,
+          "f05": 0.6344467251352863
+        }
+      }
+    },
+    {
+      "model": "page_relative",
+      "max_per_target": 2,
+      "repeat_threshold": 0.9,
+      "metrics": {
+        "suggestions": 952,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 952,
+          "gold": 1107,
+          "precision": 0.7836134453781513,
+          "recall": 0.6738934056007226,
+          "f05": 0.7589013224821974
+        },
+        "block": {
+          "hits": 694,
+          "predicted": 952,
+          "gold": 1468,
+          "precision": 0.7289915966386554,
+          "recall": 0.47275204359673023,
+          "f05": 0.6576952236542836
+        },
+        "span": {
+          "hits": 676,
+          "predicted": 952,
+          "gold": 1515,
+          "precision": 0.7100840336134454,
+          "recall": 0.44620462046204623,
+          "f05": 0.6349802742814203
+        }
+      }
+    },
+    {
+      "model": "page_relative",
+      "max_per_target": 3,
+      "repeat_threshold": 0.8,
+      "metrics": {
+        "suggestions": 961,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 746,
+          "predicted": 952,
+          "gold": 1107,
+          "precision": 0.7836134453781513,
+          "recall": 0.6738934056007226,
+          "f05": 0.7589013224821974
+        },
+        "block": {
+          "hits": 698,
+          "predicted": 961,
+          "gold": 1468,
+          "precision": 0.7263267429760666,
+          "recall": 0.47547683923705725,
+          "f05": 0.6570030120481928
+        },
+        "span": {
+          "hits": 680,
+          "predicted": 961,
+          "gold": 1515,
+          "precision": 0.7075962539021852,
+          "recall": 0.44884488448844884,
+          "f05": 0.6344467251352863
+        }
+      }
+    },
+    {
+      "model": "page_and_section_relative",
+      "max_per_target": 1,
+      "repeat_threshold": 0.5,
+      "metrics": {
+        "suggestions": 949,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 738,
+          "predicted": 949,
+          "gold": 1107,
+          "precision": 0.7776606954689147,
+          "recall": 0.6666666666666666,
+          "f05": 0.7526004487048745
+        },
+        "block": {
+          "hits": 693,
+          "predicted": 949,
+          "gold": 1468,
+          "precision": 0.7302423603793466,
+          "recall": 0.4720708446866485,
+          "f05": 0.6582446808510637
+        },
+        "span": {
+          "hits": 671,
+          "predicted": 949,
+          "gold": 1515,
+          "precision": 0.7070600632244468,
+          "recall": 0.4429042904290429,
+          "f05": 0.631707776313312
+        }
+      }
+    },
+    {
+      "model": "page_and_section_relative",
+      "max_per_target": 2,
+      "repeat_threshold": 0.65,
+      "metrics": {
+        "suggestions": 1023,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 738,
+          "predicted": 949,
+          "gold": 1107,
+          "precision": 0.7776606954689147,
+          "recall": 0.6666666666666666,
+          "f05": 0.7526004487048745
+        },
+        "block": {
+          "hits": 730,
+          "predicted": 1023,
+          "gold": 1468,
+          "precision": 0.7135874877810362,
+          "recall": 0.49727520435967304,
+          "f05": 0.656474820143885
+        },
+        "span": {
+          "hits": 704,
+          "predicted": 1023,
+          "gold": 1515,
+          "precision": 0.6881720430107527,
+          "recall": 0.4646864686468647,
+          "f05": 0.6277866952024257
+        }
+      }
+    },
+    {
+      "model": "page_and_section_relative",
+      "max_per_target": 2,
+      "repeat_threshold": 0.8,
+      "metrics": {
+        "suggestions": 956,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 738,
+          "predicted": 949,
+          "gold": 1107,
+          "precision": 0.7776606954689147,
+          "recall": 0.6666666666666666,
+          "f05": 0.7526004487048745
+        },
+        "block": {
+          "hits": 697,
+          "predicted": 956,
+          "gold": 1468,
+          "precision": 0.7290794979079498,
+          "recall": 0.47479564032697547,
+          "f05": 0.6585411942554801
+        },
+        "span": {
+          "hits": 674,
+          "predicted": 956,
+          "gold": 1515,
+          "precision": 0.7050209205020921,
+          "recall": 0.4448844884488449,
+          "f05": 0.6312043453830305
+        }
+      }
+    }
+  ],
+  "selected": {
+    "model": "page_relative",
+    "max_per_target": 1,
+    "repeat_threshold": 0.5,
+    "metrics": {
+      "suggestions": 952,
+      "all_wikipedia_links": 26159,
+      "city_links": 1515,
+      "edge": {
+        "hits": 746,
+        "predicted": 952,
+        "gold": 1107,
+        "precision": 0.7836134453781513,
+        "recall": 0.6738934056007226,
+        "f05": 0.7589013224821974
+      },
+      "block": {
+        "hits": 694,
+        "predicted": 952,
+        "gold": 1468,
+        "precision": 0.7289915966386554,
+        "recall": 0.47275204359673023,
+        "f05": 0.6576952236542836
+      },
+      "span": {
+        "hits": 676,
+        "predicted": 952,
+        "gold": 1515,
+        "precision": 0.7100840336134454,
+        "recall": 0.44620462046204623,
+        "f05": 0.6349802742814203
+      }
+    }
+  }
+}

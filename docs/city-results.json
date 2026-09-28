@@ -1,0 +1,367 @@
+{
+  "provider": "lexical",
+  "articles": 1150,
+  "split_counts": {
+    "train": 805,
+    "dev": 172,
+    "test": 173
+  },
+  "train_candidates": 27179,
+  "dev": [
+    {
+      "name": "names_first_mention",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 2549,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 1045,
+          "predicted": 2549,
+          "gold": 1107,
+          "precision": 0.4099646920360926,
+          "recall": 0.9439927732610659,
+          "f05": 0.4622666548703884
+        },
+        "block": {
+          "hits": 918,
+          "predicted": 2549,
+          "gold": 1468,
+          "precision": 0.3601412318556297,
+          "recall": 0.6253405994550408,
+          "f05": 0.3935185185185185
+        },
+        "span": {
+          "hits": 705,
+          "predicted": 2549,
+          "gold": 1515,
+          "precision": 0.2765790506080816,
+          "recall": 0.46534653465346537,
+          "f05": 0.300999060712151
+        }
+      },
+      "model": null
+    },
+    {
+      "name": "context_lexical",
+      "threshold": 0.35,
+      "metrics": {
+        "suggestions": 1157,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 736,
+          "predicted": 1157,
+          "gold": 1107,
+          "precision": 0.6361279170267934,
+          "recall": 0.6648599819331527,
+          "f05": 0.6416739319965126
+        },
+        "block": {
+          "hits": 663,
+          "predicted": 1157,
+          "gold": 1468,
+          "precision": 0.5730337078651685,
+          "recall": 0.45163487738419617,
+          "f05": 0.5437992125984251
+        },
+        "span": {
+          "hits": 499,
+          "predicted": 1157,
+          "gold": 1515,
+          "precision": 0.4312878133102852,
+          "recall": 0.32937293729372935,
+          "f05": 0.40615334527104013
+        }
+      },
+      "model": {
+        "features": [
+          "tfidf_context",
+          "early_in_page",
+          "first_target_mention",
+          "alias_words",
+          "unambiguous",
+          "train_anchor_frequency",
+          "history_section",
+          "geography_section"
+        ],
+        "coefficients": [
+          6.554468567039888,
+          0.21046830818005585,
+          0.8414483628119912,
+          1.3088787333161251,
+          1.27621098382701,
+          2.613519914223406,
+          -0.3399350253029689,
+          1.1999578905953556
+        ],
+        "intercept": -4.767023300023707
+      }
+    },
+    {
+      "name": "context_lexical",
+      "threshold": 0.5,
+      "metrics": {
+        "suggestions": 691,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 471,
+          "predicted": 691,
+          "gold": 1107,
+          "precision": 0.6816208393632417,
+          "recall": 0.4254742547425474,
+          "f05": 0.6083699302505812
+        },
+        "block": {
+          "hits": 417,
+          "predicted": 691,
+          "gold": 1468,
+          "precision": 0.6034732272069464,
+          "recall": 0.2840599455040872,
+          "f05": 0.4926748582230624
+        },
+        "span": {
+          "hits": 303,
+          "predicted": 691,
+          "gold": 1515,
+          "precision": 0.4384949348769899,
+          "recall": 0.2,
+          "f05": 0.354054685674223
+        }
+      },
+      "model": {
+        "features": [
+          "tfidf_context",
+          "early_in_page",
+          "first_target_mention",
+          "alias_words",
+          "unambiguous",
+          "train_anchor_frequency",
+          "history_section",
+          "geography_section"
+        ],
+        "coefficients": [
+          6.554468567039888,
+          0.21046830818005585,
+          0.8414483628119912,
+          1.3088787333161251,
+          1.27621098382701,
+          2.613519914223406,
+          -0.3399350253029689,
+          1.1999578905953556
+        ],
+        "intercept": -4.767023300023707
+      }
+    },
+    {
+      "name": "context_lexical",
+      "threshold": 0.65,
+      "metrics": {
+        "suggestions": 321,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 253,
+          "predicted": 321,
+          "gold": 1107,
+          "precision": 0.7881619937694704,
+          "recall": 0.22854561878952123,
+          "f05": 0.5290673358427437
+        },
+        "block": {
+          "hits": 228,
+          "predicted": 321,
+          "gold": 1468,
+          "precision": 0.7102803738317757,
+          "recall": 0.1553133514986376,
+          "f05": 0.4142441860465116
+        },
+        "span": {
+          "hits": 159,
+          "predicted": 321,
+          "gold": 1515,
+          "precision": 0.4953271028037383,
+          "recall": 0.10495049504950495,
+          "f05": 0.2840300107181136
+        }
+      },
+      "model": {
+        "features": [
+          "tfidf_context",
+          "early_in_page",
+          "first_target_mention",
+          "alias_words",
+          "unambiguous",
+          "train_anchor_frequency",
+          "history_section",
+          "geography_section"
+        ],
+        "coefficients": [
+          6.554468567039888,
+          0.21046830818005585,
+          0.8414483628119912,
+          1.3088787333161251,
+          1.27621098382701,
+          2.613519914223406,
+          -0.3399350253029689,
+          1.1999578905953556
+        ],
+        "intercept": -4.767023300023707
+      }
+    },
+    {
+      "name": "context_lexical",
+      "threshold": 0.8,
+      "metrics": {
+        "suggestions": 104,
+        "all_wikipedia_links": 26159,
+        "city_links": 1515,
+        "edge": {
+          "hits": 96,
+          "predicted": 104,
+          "gold": 1107,
+          "precision": 0.9230769230769231,
+          "recall": 0.08672086720867209,
+          "f05": 0.3151674326986212
+        },
+        "block": {
+          "hits": 93,
+          "predicted": 104,
+          "gold": 1468,
+          "precision": 0.8942307692307693,
+          "recall": 0.06335149863760219,
+          "f05": 0.24681528662420388
+        },
+        "span": {
+          "hits": 65,
+          "predicted": 104,
+          "gold": 1515,
+          "precision": 0.625,
+          "recall": 0.0429042904290429,
+          "f05": 0.16830657690315898
+        }
+      },
+      "model": {
+        "features": [
+          "tfidf_context",
+          "early_in_page",
+          "first_target_mention",
+          "alias_words",
+          "unambiguous",
+          "train_anchor_frequency",
+          "history_section",
+          "geography_section"
+        ],
+        "coefficients": [
+          6.554468567039888,
+          0.21046830818005585,
+          0.8414483628119912,
+          1.3088787333161251,
+          1.27621098382701,
+          2.613519914223406,
+          -0.3399350253029689,
+          1.1999578905953556
+        ],
+        "intercept": -4.767023300023707
+      }
+    }
+  ],
+  "selected": {
+    "name": "context_lexical",
+    "threshold": 0.35,
+    "metrics": {
+      "suggestions": 1157,
+      "all_wikipedia_links": 26159,
+      "city_links": 1515,
+      "edge": {
+        "hits": 736,
+        "predicted": 1157,
+        "gold": 1107,
+        "precision": 0.6361279170267934,
+        "recall": 0.6648599819331527,
+        "f05": 0.6416739319965126
+      },
+      "block": {
+        "hits": 663,
+        "predicted": 1157,
+        "gold": 1468,
+        "precision": 0.5730337078651685,
+        "recall": 0.45163487738419617,
+        "f05": 0.5437992125984251
+      },
+      "span": {
+        "hits": 499,
+        "predicted": 1157,
+        "gold": 1515,
+        "precision": 0.4312878133102852,
+        "recall": 0.32937293729372935,
+        "f05": 0.40615334527104013
+      }
+    },
+    "model": {
+      "features": [
+        "tfidf_context",
+        "early_in_page",
+        "first_target_mention",
+        "alias_words",
+        "unambiguous",
+        "train_anchor_frequency",
+        "history_section",
+        "geography_section"
+      ],
+      "coefficients": [
+        6.554468567039888,
+        0.21046830818005585,
+        0.8414483628119912,
+        1.3088787333161251,
+        1.27621098382701,
+        2.613519914223406,
+        -0.3399350253029689,
+        1.1999578905953556
+      ],
+      "intercept": -4.767023300023707
+    }
+  },
+  "test": {
+    "suggestions": 1100,
+    "all_wikipedia_links": 23638,
+    "city_links": 1590,
+    "edge": {
+      "hits": 747,
+      "predicted": 1100,
+      "gold": 1062,
+      "precision": 0.6790909090909091,
+      "recall": 0.7033898305084746,
+      "f05": 0.6838154522153057
+    },
+    "block": {
+      "hits": 689,
+      "predicted": 1100,
+      "gold": 1526,
+      "precision": 0.6263636363636363,
+      "recall": 0.45150720838794234,
+      "f05": 0.5813364832939588
+    },
+    "span": {
+      "hits": 538,
+      "predicted": 1100,
+      "gold": 1590,
+      "precision": 0.4890909090909091,
+      "recall": 0.3383647798742138,
+      "f05": 0.44908180300500833
+    }
+  },
+  "feature_names": [
+    "tfidf_context",
+    "early_in_page",
+    "first_target_mention",
+    "alias_words",
+    "unambiguous",
+    "train_anchor_frequency",
+    "history_section",
+    "geography_section",
+    "neural_context"
+  ],
+  "method": "Aliases learned on train only. Article-disjoint deterministic split. Threshold/model selected on dev block F0.5. Test evaluated after freezing selection. Positive labels reflect Wikipedia, not complete link utility."
+}

@@ -1,0 +1,19 @@
+{
+  "gold_blocks": 1468,
+  "candidate_blocks": 5217,
+  "candidate_recall": 0.9611716621253406,
+  "one_per_target_recall_ceiling": 0.7316076294277929,
+  "outcomes": {
+    "candidate_missing": 57,
+    "different_block_selected": 326,
+    "not_selected": 382,
+    "recovered": 703
+  },
+  "unmatched_predictions": 265,
+  "note": "Unmatched predictions are not automatically editorially incorrect. The ceiling ignores overlap conflicts.",
+  "split": "dev_only",
+  "test_evaluated": false,
+  "predictions": "refinement-ranking",
+  "all_gold_occurrences": 26159,
+  "eligible_gold_occurrences": 1515
+}

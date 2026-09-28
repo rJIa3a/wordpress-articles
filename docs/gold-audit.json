@@ -1,0 +1,9 @@
+{
+  "split": "train_dev_only",
+  "articles": 977,
+  "checked_links": 131814,
+  "changed_anchor_spans": 9848,
+  "text_changed": false,
+  "v1_sha256": "3aecb04415c8db4a638711597ee653c285d8d9551c7a8f340d179a1ad9855c41",
+  "reason": "Russian lowercase linktrail after wikilink; v1 preserved. Redirect resolution not included."
+}

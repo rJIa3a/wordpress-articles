@@ -1,0 +1,4 @@
+-r requirements-local.txt
+mwparserfromhell>=0.7,<1
+fastembed>=0.7,<1
+httpx[socks]>=0.27,<1

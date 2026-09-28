@@ -1,0 +1,61 @@
+{
+  "predictions_unchanged": true,
+  "old": {
+    "suggestions": 968,
+    "all_wikipedia_links": 26159,
+    "city_links": 1515,
+    "edge": {
+      "hits": 755,
+      "predicted": 968,
+      "gold": 1107,
+      "precision": 0.7799586776859504,
+      "recall": 0.6820234869015357,
+      "f05": 0.758184374372364
+    },
+    "block": {
+      "hits": 703,
+      "predicted": 968,
+      "gold": 1468,
+      "precision": 0.7262396694214877,
+      "recall": 0.47888283378746593,
+      "f05": 0.6582397003745318
+    },
+    "span": {
+      "hits": 531,
+      "predicted": 968,
+      "gold": 1515,
+      "precision": 0.5485537190082644,
+      "recall": 0.3504950495049505,
+      "f05": 0.4928531650269166
+    }
+  },
+  "corrected": {
+    "suggestions": 968,
+    "all_wikipedia_links": 26159,
+    "city_links": 1515,
+    "edge": {
+      "hits": 755,
+      "predicted": 968,
+      "gold": 1107,
+      "precision": 0.7799586776859504,
+      "recall": 0.6820234869015357,
+      "f05": 0.758184374372364
+    },
+    "block": {
+      "hits": 703,
+      "predicted": 968,
+      "gold": 1468,
+      "precision": 0.7262396694214877,
+      "recall": 0.47888283378746593,
+      "f05": 0.6582397003745318
+    },
+    "span": {
+      "hits": 685,
+      "predicted": 968,
+      "gold": 1515,
+      "precision": 0.7076446280991735,
+      "recall": 0.4521452145214521,
+      "f05": 0.6357898644885837
+    }
+  }
+}

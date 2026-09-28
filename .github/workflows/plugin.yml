@@ -1,41 +1,37 @@
-name: Build and Release Plugin
-
+name: Test and Package Plugin
 on:
   push:
   pull_request:
   workflow_dispatch:
-
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
-      - run: vendor/bin/phpunit --coverage-text --coverage-clover coverage.xml
-      - uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
         with:
-          name: coverage
-          path: coverage.xml
-
-  release:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
-      - run: mkdir build && cp -r context-linker build/context-linker
+          php-version: '8.2'
+          tools: composer
+          coverage: none
+      - run: composer install --no-interaction --prefer-dist
+      - run: vendor/bin/phpunit
       - run: zip -r plugin.zip context-linker
       - uses: actions/upload-artifact@v4
         with:
-          name: plugin
+          name: plugin-preview
           path: plugin.zip
-      - name: Get version
-        id: vars
-        run: echo "VERSION=$(grep -oP 'Version:\s*\K.*' context-linker/context-linker.php)" >> "$GITHUB_OUTPUT"
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
         with:
-          tag_name: v${{ steps.vars.outputs.VERSION }}
+          name: plugin-preview
+      - uses: softprops/action-gh-release@v2
+        with:
           files: plugin.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
