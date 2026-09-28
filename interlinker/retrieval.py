@@ -15,6 +15,7 @@ from nltk.stem.snowball import RussianStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import normalize
+from .content import page_identity,same_page
 STEM=RussianStemmer()
 STOP=set('и в на с по для из к от а но или это как что при до не его ее их во также который которые быть может'.split())
 def tokens(text):
@@ -109,7 +110,7 @@ class Engine:
         entities=set(re.findall(r'\b[A-ZА-ЯЁ][A-ZА-ЯЁ\d-]{1,}\b',text))
         candidates=[]
         for i,p in enumerate(self.pages):
-            if p['url']==source['url']:continue
+            if same_page(p['url'],source['url']):continue
             keyword=len(q & self.title_tokens[i])/max(1,len(self.title_tokens[i]))
             entity=len(entities & self.entities[i])/max(1,len(entities))
             taxonomy=len(set(source['categories']) & set(p['categories']))/max(1,len(set(source['categories'])|set(p['categories'])))
@@ -155,8 +156,9 @@ class Engine:
                 options.append(dict(source=source['url'],block=b['id'],target=c['target'],**a,score=round(score*100,2),components=c['components']))
         chosen=[];seen=set();spans={}
         for r in sorted(options,key=lambda x:-x['score']):
-            if r['target'] in seen:rejections['repeated_target']+=1;continue
+            identity=page_identity(r['target'])
+            if identity in seen:rejections['repeated_target']+=1;continue
             if any(r['start']<e and r['end']>s for s,e in spans.get(r['block'],[])):rejections['overlap']+=1;continue
-            chosen.append(r);seen.add(r['target']);spans.setdefault(r['block'],[]).append((r['start'],r['end']))
+            chosen.append(r);seen.add(identity);spans.setdefault(r['block'],[]).append((r['start'],r['end']))
             if len(chosen)>=30:break
         return chosen,retrieved,dict(rejections)

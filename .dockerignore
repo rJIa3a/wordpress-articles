@@ -1,0 +1,12 @@
+.git
+.venv
+.pytest_cache
+__pycache__
+local-data
+.env
+*.sqlite*
+articles/*.json
+docs
+python_tests
+tests
+vendor

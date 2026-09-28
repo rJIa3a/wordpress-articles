@@ -1,0 +1,55 @@
+services:
+  data-init:
+    image: universal-interlinker:local
+    user: "0:0"
+    restart: "no"
+    volumes:
+      - ./local-data:/seed
+      - interlinker-data:/data
+    command: ["python", "tools/docker_init_data.py"]
+  app:
+    image: universal-interlinker:local
+    build: .
+    depends_on:
+      data-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      APP_ENV: ${APP_ENV:-development}
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      INTERLINKER_DB: /data/interlinker.sqlite3
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1}
+      SMTP_HOST: ${SMTP_HOST:-mailpit}
+      SMTP_PORT: ${SMTP_PORT:-1025}
+      SMTP_FROM: ${SMTP_FROM:-Universal Interlinker <noreply@localhost>}
+      SMTP_STARTTLS: ${SMTP_STARTTLS:-false}
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - interlinker-data:/data
+      - ./local-data/cities:/app/local-data/cities:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,noexec,nosuid
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+  mailpit:
+    image: axllent/mailpit:v1.27
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8025:8025"
+    volumes:
+      - mailpit-data:/data
+    environment:
+      MP_DATABASE: /data/mailpit.db
+      MP_MAX_MESSAGES: 100
+
+volumes:
+  interlinker-data:
+  mailpit-data:

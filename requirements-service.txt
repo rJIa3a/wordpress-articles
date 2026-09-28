@@ -8,7 +8,4 @@ scikit-learn>=1.4,<2
 nltk>=3.8,<4
 pymorphy3>=2,<3
 pymorphy3-dicts-ru>=2.4,<3
-pytest>=8,<9
-pymysql>=1.1,<2
-python-dotenv>=1,<2
 argon2-cffi>=23.1,<26

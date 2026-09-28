@@ -5,8 +5,9 @@ from urllib.robotparser import RobotFileParser
 from xml.etree import ElementTree
 import httpx
 from . import storage as db
-from .content import normalize,parse,insert_preview
+from .content import normalize,parse,insert_preview,page_identity,same_page
 from .retrieval import Engine,Ollama,MiniLM
+from .keyword_ranker import rules_for_pages,candidates as keyword_candidates
 LOCK=threading.RLock()
 DEFAULTS=dict(city_mode=False,contextual=False,confidence_threshold=.85,provider='lsa',minimum_score=78,max_per_page=3,anchor_repetition_limit=3)
 def settings(site):
@@ -40,18 +41,20 @@ def generate(site):
    from .geography import annotate
    annotate(pages)
   engine=Engine(pages,Ollama() if cfg['provider']=='ollama' else MiniLM() if cfg['provider']=='minilm' else None)
+  keyword_rules=rules_for_pages(db.rows('SELECT query,target_url,source_file FROM keyword_targets WHERE site_id=?',(site,)),pages)
   rules=db.rows('SELECT * FROM seo_priorities WHERE site_id=?',(site,));by={p['url']:p for p in pages}
   diagnostics=collections.Counter();page_diagnostics=[]
-  accepted=[];repeat=collections.Counter((l['target'],l['anchor'].casefold()) for p in pages for l in p['links'])
+  accepted=[];repeat=collections.Counter((page_identity(l['target']),l['anchor'].casefold()) for p in pages for l in p['links'])
   with db.connect() as c:c.execute("DELETE FROM recommendations WHERE site_id=? AND status='pending' AND NOT EXISTS (SELECT 1 FROM change_history h WHERE h.recommendation_id=recommendations.id)",(site,))
-  existing=db.rows('SELECT * FROM recommendations WHERE site_id=?',(site,));existing_keys={(r['source'],r['target'],r['block']) for r in existing if r['status']!='stale'}
+  existing=db.rows('SELECT * FROM recommendations WHERE site_id=?',(site,));existing_keys={(page_identity(r['source']),page_identity(r['target']),r['block']) for r in existing if r['status']!='stale'}
   for r in existing:
-   if r['status'] in ('approved','pending'):repeat[(r['target'],r['anchor'].casefold())]+=1
+   if r['status'] in ('approved','pending'):repeat[(page_identity(r['target']),r['anchor'].casefold())]+=1
   for p in pages:
    if priority(p,rules)[1]:continue
    recs,_,reasons=engine.recommend(p,threshold=cfg['minimum_score']/100)
+   recs=sorted(recs+keyword_candidates(p,keyword_rules,engine,cfg['minimum_score']),key=lambda item:-item['score'])
    diagnostics.update(reasons);page_diagnostics.append(dict(source=p['url'],retrieval_accepted=len(recs),rejections=reasons))
-   used={l['target'] for l in p['links']};kept=sum(r['source']==p['url'] and r['status'] in ('approved','pending') for r in existing)
+   used={page_identity(l['target']) for l in p['links']};kept=sum(same_page(r['source'],p['url']) and r['status'] in ('approved','pending') for r in existing)
    for r in recs:
     if cfg['contextual']:
      from .context import judge
@@ -59,20 +62,22 @@ def generate(site):
      decision=judge(p,b,[by[r['target']]],cfg['confidence_threshold'])
      if not decision:diagnostics['context_rejected']+=1;continue
      r['anchor']=decision['anchor'];r['context_reason']=decision['reason'];r['confidence']=decision['confidence']
+    if same_page(p['url'],r['target']):diagnostics['self_link']+=1;continue
     target=by[r['target']];weight,blocked=priority(target,rules)
     if blocked:diagnostics['blacklisted_target']+=1;continue
-    if r['target'] in used:diagnostics['existing_target']+=1;continue
+    if page_identity(r['target']) in used:diagnostics['existing_target']+=1;continue
     if target['fingerprint']==p['fingerprint']:diagnostics['identical_page']+=1;continue
-    if (p['url'],r['target'],r['block']) in existing_keys:diagnostics['previously_reviewed']+=1;continue
-    if repeat[(r['target'],r['anchor'].casefold())]>=cfg['anchor_repetition_limit']:diagnostics['anchor_repetition']+=1;continue
+    if (page_identity(p['url']),page_identity(r['target']),r['block']) in existing_keys:diagnostics['previously_reviewed']+=1;continue
+    if repeat[(page_identity(r['target']),r['anchor'].casefold())]>=cfg['anchor_repetition_limit']:diagnostics['anchor_repetition']+=1;continue
     b=next(b for b in p['blocks'] if b['id']==r['block'])
     try:new=insert_preview(b['html'],r['anchor'],r['target'])
     except ValueError:diagnostics['unsafe_html_location']+=1;continue
     if kept>=cfg['max_per_page']:diagnostics['page_limit']+=1;break
     # Priority bonus only after relevance gate. Never rescues a rejected match.
     r.update(score=min(100,r['score']+min(5,weight)),source_title=p['title'],target_title=target['title'],old_html=b['html'],new_html=new,original_text=b['text'],provider=cfg['provider'],priority=weight)
+    r.setdefault('origin','algorithm')
     r['components']['seo_priority_bonus']=min(5,weight)
-    accepted.append(r);kept+=1;used.add(r['target']);repeat[(r['target'],r['anchor'].casefold())]+=1
+    accepted.append(r);kept+=1;used.add(page_identity(r['target']));repeat[(page_identity(r['target']),r['anchor'].casefold())]+=1
   with db.connect() as c:
    for r in accepted:c.execute("INSERT INTO recommendations(site_id,source,target,block,anchor,score,data) VALUES(?,?,?,?,?,?,?) ON CONFLICT(site_id,source,target,block) DO UPDATE SET anchor=excluded.anchor,score=excluded.score,data=excluded.data,status='pending',approved=NULL WHERE recommendations.status='stale'",(site,r['source'],r['target'],r['block'],r['anchor'],r['score'],json.dumps(r,ensure_ascii=False)))
   with db.connect() as c:c.execute('INSERT INTO generation_diagnostics(site_id,data) VALUES(?,?) ON CONFLICT(site_id) DO UPDATE SET data=excluded.data,created=CURRENT_TIMESTAMP',(site,json.dumps(dict(provider=cfg['provider'],accepted=len(accepted),rejections=dict(diagnostics),pages=page_diagnostics),ensure_ascii=False)))
@@ -91,6 +96,67 @@ def import_exports(folder):
    p=parse(url,data['content']['rendered'],data['title']['rendered'],meta=meta)
    if p:db.save_page(site,p);count+=1
   return count
+
+def import_wordpress(site, max_items=1000):
+ """Read published posts/pages through the site's public WordPress REST API."""
+ with LOCK:
+  s=db.rows('SELECT * FROM sites WHERE id=?',(site,))[0]
+  base=s['url'].rstrip('/')
+  parsed=urlsplit(base)
+  if parsed.scheme!='https':raise ValueError('Импорт WordPress REST API разрешён только по HTTPS')
+  imported=visited=0;errors=[]
+  headers={'User-Agent':'UniversalInterlinker/0.2 (read-only)','Accept':'application/json'}
+  with httpx.Client(timeout=20,follow_redirects=False,headers=headers) as client:
+   # Discover public custom post types exposed by WordPress REST, such as
+   # dagorod.ru's `cities`; core infrastructure types are not article content.
+   endpoints=['posts','pages']
+   try:
+    r=client.get(base+'/wp-json/wp/v2/types')
+    if r.status_code==200:
+     types=r.json()
+     if isinstance(types,dict):
+      excluded={'post','page','attachment','nav_menu_item','wp_block','wp_template','wp_template_part','wp_navigation'}
+      for name,info in types.items():
+       rest_base=info.get('rest_base') if isinstance(info,dict) else None
+       if name not in excluded and isinstance(rest_base,str) and rest_base and rest_base not in endpoints and '/' not in rest_base:
+        endpoints.append(rest_base)
+   except (httpx.HTTPError,ValueError):
+    pass
+   for endpoint in endpoints:
+    page=1
+    while visited<max_items:
+     api_url=f'{base}/wp-json/wp/v2/{endpoint}?status=publish&per_page=100&page={page}&_fields=id,date,link,title,content,categories,tags,type'
+     public_url(api_url)
+     if urlsplit(api_url).netloc!=parsed.netloc:raise ValueError('REST API вышел за пределы сайта')
+     try:r=client.get(api_url)
+     except httpx.HTTPError as e:
+      errors.append(f'{endpoint}: {type(e).__name__}');break
+     if r.status_code in (400,404):
+      if page==1:errors.append(f'{endpoint}: REST API недоступен (HTTP {r.status_code})')
+      break
+     if r.status_code!=200:
+      errors.append(f'{endpoint}: HTTP {r.status_code}');break
+     try:items=r.json()
+     except ValueError:
+      errors.append(f'{endpoint}: сервер вернул не JSON');break
+     if not isinstance(items,list):
+      errors.append(f'{endpoint}: неожиданный ответ REST API');break
+     if not items:break
+     for item in items:
+      visited+=1
+      link=item.get('link','');url=normalize(link)
+      if not url or urlsplit(url).netloc!=parsed.netloc:continue
+      content=item.get('content',{});title=item.get('title',{})
+      if not isinstance(content,dict) or not isinstance(title,dict):continue
+      meta={'type':item.get('type',endpoint[:-1]),'categories':item.get('categories',[]),'tags':item.get('tags',[])}
+      p=parse(url,content.get('rendered',''),title.get('rendered',''),meta=meta)
+      if p:db.save_page(site,p);imported+=1
+      if visited>=max_items:break
+     total=int(r.headers.get('X-WP-TotalPages','1') or 1)
+     if page>=total or len(items)<100:break
+     page+=1
+    if visited>=max_items:break
+  return {'visited':visited,'stored':imported,'errors':errors}
 
 def public_url(url):
  u=urlsplit(url)

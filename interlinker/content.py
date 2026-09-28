@@ -12,6 +12,18 @@ def normalize(url,base=None):
  if re.search(r'/(wp-admin|wp-login\.php|feed|page/\d+|cart|checkout|search)(/|$)',path,re.I):return None
  return urlunsplit((u.scheme,host,path,'',''))
 
+def page_identity(url):
+ """Compare common URL variants as one page for self-link and duplicate checks."""
+ normalized=normalize(url)
+ if not normalized:return None
+ u=urlsplit(normalized)
+ host=u.hostname.lower().removeprefix('www.')
+ path=u.path.rstrip('/') or '/'
+ return host,path
+
+def same_page(first,second):
+ a=page_identity(first);return a is not None and a==page_identity(second)
+
 def parse(url,raw,title='',depth=0,meta=None):
  url=normalize(url)
  if not url:return None
@@ -32,9 +44,12 @@ def parse(url,raw,title='',depth=0,meta=None):
    links.append(dict(target=target,anchor=a.get_text(' ',strip=True),contextual=int(contextual)))
  for node in root.select('script,style,nav,header,footer,aside,form,.related-posts,.sharedaddy'):node.decompose()
  blocks=[];section=''
- for node in root.find_all(['p','li','h2','h3']):
-  if node.name in ('h2','h3'):section=node.get_text(' ',strip=True);continue
-  if node.find_parent(['p','li']):continue
+ headings=('h1','h2','h3','h4','h5','h6')
+ for node in root.find_all(['p','li',*headings]):
+  if node.name in headings:section=node.get_text(' ',strip=True);continue
+  # Malformed WordPress HTML can contain paragraphs and headings inside <p>.
+  # The outer tag would otherwise become a giant block containing heading text.
+  if node.find(['p','li',*headings]):continue
   text=node.get_text()
   if len(text.strip())<40:continue
   blocks.append(dict(id=str(len(blocks)),text=text,html=str(node),section=section))
@@ -49,7 +64,7 @@ class TextLocations(HTMLParser):
  def handle_endtag(self,tag):
   if tag in self.stack:self.stack=self.stack[:len(self.stack)-1-self.stack[::-1].index(tag)]
  def handle_data(self,data):
-  if any(t in self.stack for t in ('a','script','style','code','pre')):return
+  if any(t in self.stack for t in ('a','script','style','code','pre','h1','h2','h3','h4','h5','h6')):return
   line,col=self.getpos();start=self.offsets[line-1]+col;self.ranges.append((start,start+len(data)))
 
 def insert_preview(raw,anchor,target):
